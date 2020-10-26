@@ -22,7 +22,7 @@ public class SteeringFollowPath : MonoBehaviour {
 
 
 
-    private Vector3 distance;
+    private float distance;
     private float tdist =0;
     public GameObject test;
 
@@ -39,37 +39,35 @@ public class SteeringFollowPath : MonoBehaviour {
         var points = curve.Points;
         var pointsCount = points.Length;
       
-       // Debug.Log(section);
-        float shortestpoint =-1;
-
-        // Get Shortest point of the curve & distance
+        float[] distances = new float[pointsCount];
+        float shortestdistance = 0;
         for (int i = 0; i < pointsCount; i++)
         {
-            Debug.Log(points[i]);
             Vector3 pp =test.transform.position - points[i].PositionWorld;
+            distances[i] = pp.magnitude;
 
-
-            if(pp.magnitude < shortestpoint && shortestpoint != -1)
+            if(i == 0)
             {
-                shortestpoint = pp.magnitude;
-                nearPoint = i;
-                Debug.Log(shortestpoint);
-                Debug.Log(nearPoint);
+                shortestdistance = pp.magnitude;
             }
-            //points[i];
-
+            else if( shortestdistance > pp.magnitude)
+            {
+                shortestdistance = pp.magnitude;
+            }
         }
+      
         //cada seccio té 15 parts
         int parts = bgMath.SectionParts;
         Debug.Log(parts);
-        Vector3 cdis = points[0].PointTransform.position;
-        distance = test.transform.position - cdis;
+       // Vector3 cdis = points[0].PointTransform.position;
+        //distance = test.transform.position - cdis;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-       
+
+        distance += 5f * Time.deltaTime;
         //var points = curve.Points;
         //var pointsCount = points.Length;
         //Debug.Log(section);
@@ -79,6 +77,10 @@ public class SteeringFollowPath : MonoBehaviour {
         //    //points[i];
 
         //}
+        Vector3 tangent;
+        test.transform.position = bgMath.CalcPositionAndTangentByDistance(distance, out tangent);
+
+        test.transform.rotation = Quaternion.LookRotation(tangent);
 
         // TODO 2: Check if the tank is close enough to the desired point
         // If so, create a new point further ahead in the path
