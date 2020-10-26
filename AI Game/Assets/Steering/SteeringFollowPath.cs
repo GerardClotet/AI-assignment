@@ -25,8 +25,11 @@ public class SteeringFollowPath : MonoBehaviour {
     private float distance;
     private float tdist =0;
     public GameObject test;
-
+    enum CALCTYPE { CLOSESTPOINT,FOLLOWPATH};
+    CALCTYPE calctype;
     void Start () {
+
+        calctype = CALCTYPE.CLOSESTPOINT;
 		move = GetComponent<Move>();
 		seek = GetComponent<SteeringSeek>();
         curve = Path.GetComponent<BGCurve>();
@@ -55,7 +58,7 @@ public class SteeringFollowPath : MonoBehaviour {
                 shortestdistance = pp.magnitude;
             }
         }
-      
+        
         //cada seccio té 15 parts
         int parts = bgMath.SectionParts;
         Debug.Log(parts);
@@ -67,7 +70,6 @@ public class SteeringFollowPath : MonoBehaviour {
 	void Update () 
 	{
 
-        distance += 5f * Time.deltaTime;
         //var points = curve.Points;
         //var pointsCount = points.Length;
         //Debug.Log(section);
@@ -78,9 +80,36 @@ public class SteeringFollowPath : MonoBehaviour {
 
         //}
         Vector3 tangent;
-        test.transform.position = bgMath.CalcPositionAndTangentByDistance(distance, out tangent);
+        float ndistance;
 
-        test.transform.rotation = Quaternion.LookRotation(tangent);
+        switch (calctype)
+        {
+            case CALCTYPE.CLOSESTPOINT:
+                Vector3 destination = bgMath.CalcPositionByClosestPoint(test.transform.position, out ndistance, out tangent);
+                Vector3 direction = destination - test.transform.position;
+                float mg = direction.magnitude;
+                test.transform.position += direction.normalized * 5 * Time.deltaTime;
+                if (Mathf.Abs(test.transform.position.x - destination.x) < 1 && Mathf.Abs(test.transform.position.y - destination.y) < 1)
+                    calctype = CALCTYPE.FOLLOWPATH;
+                test.transform.rotation = Quaternion.LookRotation(tangent);
+                break;
+
+            case CALCTYPE.FOLLOWPATH:
+                distance += 5f * Time.deltaTime;
+                test.transform.position = bgMath.CalcPositionAndTangentByDistance(distance, out tangent);
+                test.transform.rotation = Quaternion.LookRotation(tangent);
+                break;
+        }
+        
+        //Dest Position
+
+        
+    
+           
+        //distance += 5f * Time.deltaTime;
+        //test.transform.position = bgMath.CalcPositionAndTangentByDistance(ndistance, out tangent);
+
+        
 
         // TODO 2: Check if the tank is close enough to the desired point
         // If so, create a new point further ahead in the path
