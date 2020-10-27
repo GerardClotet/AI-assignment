@@ -1,0 +1,96 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpawnProjectile : MonoBehaviour
+{
+    // Start is called before the first frame update
+    public GameObject shell;
+    public Transform startPos;
+    public Transform endPos;
+
+    //recoil
+    public GameObject turret;
+    public float recoilSpeed=7f;
+    private float recoilTime = 1f; //maxtime to back & forth
+    private float recoilingAmount = 0f;
+    private bool recol_turret = false;
+    private bool recolback = true;
+    private Vector3 originRecoilPos;
+    private Vector3 endRecoilPos;
+    void Start()
+    {
+        //GameObject objShell = Instantiate(shell, startPos.position, Quaternion.identity) as GameObject;
+        //RotateTo(objShell, endPos.position);
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        if (!recol_turret)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                recol_turret = true;
+                SpawnShell();
+            }
+        }
+        else
+        {
+            if (recolback)
+            {
+                recoilingAmount += Time.deltaTime*recoilSpeed;
+                if (recoilingAmount >= recoilTime)
+                    recolback = false;
+            }
+            else if (!recolback)
+            {
+                recoilingAmount -= Time.deltaTime*recoilSpeed;
+
+                if (recoilingAmount <= 0)
+                {
+                    recolback = true;
+                    recoilingAmount = 0;
+                    recol_turret = false;
+                }
+            }
+
+                Recoil();
+        }
+    }
+    void RotateTo(GameObject obj, Vector3 destination)
+    {
+        Vector3 direction = destination - obj.transform.position;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        obj.transform.localRotation = Quaternion.Lerp(obj.transform.rotation, rotation, 1);
+    }
+
+    void SpawnShell()
+    {
+        GameObject objShell = Instantiate(shell, startPos.position, Quaternion.identity) as GameObject;
+        RotateTo(objShell, endPos.position);
+        GetPositions();
+        //Recoil();
+
+    }
+
+    //This Just recoils Back  ---> TODO -> need to recoil forth
+    private void Recoil()
+    {
+        transform.localPosition = Vector3.Lerp(originRecoilPos, endRecoilPos, recoilingAmount);
+    }
+
+    private void GetPositions()
+    {
+
+        //originRecoilPos = turret.transform.localPosition;
+        //endRecoilPos = originRecoilPos;
+        //endRecoilPos.z *= 10;
+
+        Vector3 dir = startPos.position - endPos.position;
+        originRecoilPos = turret.transform.localPosition;
+        endRecoilPos = originRecoilPos;
+        endRecoilPos.x *= dir.normalized.x * -15;
+        endRecoilPos.z *= dir.normalized.z * -15;
+    }
+}

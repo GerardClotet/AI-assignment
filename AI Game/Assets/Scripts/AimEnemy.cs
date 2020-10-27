@@ -16,7 +16,8 @@ public class AimEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        ownturret.transform.LookAt(enemy.transform);
+        Vector3 aim = enemy.transform.position - ownturret.transform.position;
+        aim.y = 0;
+        transform.rotation = Quaternion.LookRotation(aim);
     }
 }

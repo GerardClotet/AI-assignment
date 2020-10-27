@@ -11,9 +11,12 @@ public class WanderTest : MonoBehaviour
     public Camera cam;
     public GameObject enemyTank;
     private float freq = 0f;
+    // SteeringWander wander;
+    SteeringSeek seek;
+    NavMeshPath nav_path;
     void Start()
     {
-        
+        seek = GetComponent<SteeringSeek>();
     }
 
     // Update is called once per frame
@@ -34,7 +37,30 @@ public class WanderTest : MonoBehaviour
         {
             freq -= 0.5f;
             agent.SetDestination(enemyTank.transform.position);
+            if (agent.CalculatePath(enemyTank.transform.position, agent.path))
+            {
 
+              if(agent.path.status == NavMeshPathStatus.PathComplete)
+              {
+                    Debug.Log("Path Complete");
+              }
+
+              else if (agent.path.status == NavMeshPathStatus.PathInvalid)
+              {
+                    Debug.Log("Path INVALID");
+              }
+
+              else if (agent.path.status == NavMeshPathStatus.PathPartial)
+              {
+                    Debug.Log("Path PARTIAL");
+              }
+
+                int i = agent.path.corners.Length;
+
+               seek.Steer(agent.path.corners[i-1]);
+            }
+
+           
         }
 
     }
