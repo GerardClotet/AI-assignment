@@ -10,7 +10,6 @@ public class SteeringWander : MonoBehaviour {
 
 	SteeringSeek seek;
 	Vector3 random_point;
-
 	// Use this for initialization
 	void Start () {
 		seek = GetComponent<SteeringSeek>();
