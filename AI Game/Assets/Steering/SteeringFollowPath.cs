@@ -25,7 +25,10 @@ public class SteeringFollowPath : MonoBehaviour {
     private float distance;
     private float tdist =0;
     public GameObject test;
-    enum CALCTYPE { CLOSESTPOINT,FOLLOWPATH};
+
+
+    private Vector3[] startRot_Pos;
+    enum CALCTYPE { CLOSESTPOINT,FOLLOWPATH,NONE};
     CALCTYPE calctype;
     void Start () {
 
@@ -36,78 +39,25 @@ public class SteeringFollowPath : MonoBehaviour {
         bgMath = Path.GetComponent<BGCcMath>();
         // TODO 1: Calculate the closest point from the tank to the curve
       //  section = Path.GetComponent<BGCurveBaseMath.SectionInfo>();
+       startRot_Pos = GetClosestPoint_GetOrientation();
 
 
-        int nearPoint = -1;
-        var points = curve.Points;
-        var pointsCount = points.Length;
-      
-        float[] distances = new float[pointsCount];
-        float shortestdistance = 0;
-        for (int i = 0; i < pointsCount; i++)
-        {
-            Vector3 pp =test.transform.position - points[i].PositionWorld;
-            distances[i] = pp.magnitude;
 
-            if(i == 0)
-            {
-                shortestdistance = pp.magnitude;
-            }
-            else if( shortestdistance > pp.magnitude)
-            {
-                shortestdistance = pp.magnitude;
-            }
-        }
-        
-        //cada seccio té 15 parts
-        int parts = bgMath.SectionParts;
-        Debug.Log(parts);
-       // Vector3 cdis = points[0].PointTransform.position;
-        //distance = test.transform.position - cdis;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () 
 	{
 
-        //var points = curve.Points;
-        //var pointsCount = points.Length;
-        //Debug.Log(section);
-        //for(int i =0; i < pointsCount; i++)
-        //{
-        //    Debug.Log(points[i]);
-        //    //points[i];
-
-        //}
-        Vector3 tangent;
-        float ndistance;
-
         switch (calctype)
         {
             case CALCTYPE.CLOSESTPOINT:
-                Vector3 destination = bgMath.CalcPositionByClosestPoint(test.transform.position, out ndistance, out tangent);
-                Vector3 direction = destination - test.transform.position;
-                float mg = direction.magnitude;
-                test.transform.position += direction.normalized * 5 * Time.deltaTime;
-                if (Mathf.Abs(test.transform.position.x - destination.x) < 1 && Mathf.Abs(test.transform.position.y - destination.y) < 1)
-                    calctype = CALCTYPE.FOLLOWPATH;
-                test.transform.rotation = Quaternion.LookRotation(tangent);
+                ApproachClosestPoint();
                 break;
-
             case CALCTYPE.FOLLOWPATH:
-                distance += 5f * Time.deltaTime;
-                test.transform.position = bgMath.CalcPositionAndTangentByDistance(distance, out tangent);
-                test.transform.rotation = Quaternion.LookRotation(tangent);
+                FollowPath();
                 break;
         }
-        
-        //Dest Position
-
-        
-    
-           
-        //distance += 5f * Time.deltaTime;
-        //test.transform.position = bgMath.CalcPositionAndTangentByDistance(ndistance, out tangent);
 
         
 
@@ -116,6 +66,37 @@ public class SteeringFollowPath : MonoBehaviour {
     }
 
  
+    private Vector3[] GetClosestPoint_GetOrientation()
+    {
+        Vector3 tangent;
+        Vector3 destination = bgMath.CalcPositionByClosestPoint(test.transform.position, out distance, out tangent);
+        Vector3[] dir_rot = new Vector3[2];
+        dir_rot[0] = destination;
+        dir_rot[1] = tangent;
+        return dir_rot;
+    }
+
+    private void ApproachClosestPoint()
+    {
+        Vector3 direction = startRot_Pos[0] - test.transform.position;
+        test.transform.rotation = Quaternion.LookRotation(startRot_Pos[1]);
+
+        test.transform.position += direction.normalized * 5 * Time.deltaTime;
+
+        if (Mathf.Abs((startRot_Pos[0] - test.transform.position).magnitude) <= 0.1f)
+            calctype = CALCTYPE.FOLLOWPATH;
+    }
+
+    private void FollowPath()
+    {
+        float totaDistance = bgMath.GetDistance();
+        if (totaDistance <= distance)
+            distance = 0;
+        Vector3 tangent;
+        test.transform.position = bgMath.CalcPositionAndTangentByDistance(distance, out tangent);
+        test.transform.rotation = Quaternion.LookRotation(tangent);
+        distance += 5f * Time.deltaTime;
+    }
 	void OnDrawGizmosSelected() 
 	{
 
