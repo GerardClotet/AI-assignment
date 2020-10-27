@@ -490,6 +490,7 @@ GameObject:
   - component: {fileID: 179653405}
   - component: {fileID: 179653407}
   - component: {fileID: 179653406}
+  - component: {fileID: 179653408}
   m_Layer: 0
   m_Name: TankTurret
   m_TagString: Untagged
@@ -530,7 +531,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 12c120f2400576c4f97a98bcca5529bc, type: 2}
+  - {fileID: 2100000, guid: 463052f3f7389124f9e7b34b0b931d0d, type: 2}
   - {fileID: 2100000, guid: c4c5f95d06932564c8672b4bafeb1b28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -560,6 +561,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179653404}
   m_Mesh: {fileID: 4300002, guid: 002e2a607f5b64c48be0b3b0d8b8bfdd, type: 3}
+--- !u!114 &179653408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179653404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f13a1917739b240a800c0816f644c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1579789855}
+  ownturret: {fileID: 179653404}
 --- !u!1 &213304458
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +807,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 127bc74a6a175479ea3c5915672c9923, type: 2}
+  - {fileID: 2100000, guid: ff21ff0ea9b18924bb1fdfbb0e58f5cb, type: 2}
   - {fileID: 2100000, guid: 574c4e070e5dd0a40a02b979f582a836, type: 2}
   - {fileID: 2100000, guid: c4c5f95d06932564c8672b4bafeb1b28, type: 2}
   m_StaticBatchInfo:
@@ -1397,8 +1412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdb74c0d43ad45458532f1a1ff22e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ratio_increment: 0.1
-  min_distance: 1
   Path: {fileID: 0}
   test: {fileID: 0}
 --- !u!114 &653852218
@@ -1502,7 +1515,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653852214}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e439e859d063a4ca9983e1f7bb60411a, type: 3}
   m_Name: 
@@ -1564,7 +1577,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653852214}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 612fefe37772540c8bb2bcc1639f521e, type: 3}
   m_Name: 
@@ -1724,7 +1737,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 127bc74a6a175479ea3c5915672c9923, type: 2}
+  - {fileID: 2100000, guid: ff21ff0ea9b18924bb1fdfbb0e58f5cb, type: 2}
   - {fileID: 2100000, guid: c4c5f95d06932564c8672b4bafeb1b28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -2136,7 +2149,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 12c120f2400576c4f97a98bcca5529bc, type: 2}
+  - {fileID: 2100000, guid: 463052f3f7389124f9e7b34b0b931d0d, type: 2}
   - {fileID: 2100000, guid: 574c4e070e5dd0a40a02b979f582a836, type: 2}
   - {fileID: 2100000, guid: c4c5f95d06932564c8672b4bafeb1b28, type: 2}
   m_StaticBatchInfo:
@@ -3050,7 +3063,7 @@ MonoBehaviour:
   sectionParts: 15
   optimizeStraightLines: 0
   tolerance: 0.2
-  usePositionToCalculateTangents: 0
+  usePositionToCalculateTangents: 1
   updateMode: 0
   rendererForUpdateCheck: {fileID: 0}
   mathChangedEvent:
@@ -4276,7 +4289,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 12c120f2400576c4f97a98bcca5529bc, type: 2}
+  - {fileID: 2100000, guid: 463052f3f7389124f9e7b34b0b931d0d, type: 2}
   - {fileID: 2100000, guid: c4c5f95d06932564c8672b4bafeb1b28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4778,10 +4791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdb74c0d43ad45458532f1a1ff22e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ratio_increment: 0.1
-  min_distance: 1
   Path: {fileID: 1079148645}
-  test: {fileID: 1912312459}
+  test: {fileID: 1579789855}
 --- !u!1 &1621344713
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,6 +4886,7 @@ GameObject:
   - component: {fileID: 1681955694}
   - component: {fileID: 1681955696}
   - component: {fileID: 1681955695}
+  - component: {fileID: 1681955697}
   m_Layer: 0
   m_Name: TankTurret
   m_TagString: Untagged
@@ -4915,7 +4927,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 127bc74a6a175479ea3c5915672c9923, type: 2}
+  - {fileID: 2100000, guid: ff21ff0ea9b18924bb1fdfbb0e58f5cb, type: 2}
   - {fileID: 2100000, guid: c4c5f95d06932564c8672b4bafeb1b28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4945,6 +4957,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681955693}
   m_Mesh: {fileID: 4300002, guid: 002e2a607f5b64c48be0b3b0d8b8bfdd, type: 3}
+--- !u!114 &1681955697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681955693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f13a1917739b240a800c0816f644c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 653852214}
+  ownturret: {fileID: 1681955693}
 --- !u!1 &1690438178
 GameObject:
   m_ObjectHideFlags: 0
@@ -5522,7 +5548,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 12c120f2400576c4f97a98bcca5529bc, type: 2}
+  - {fileID: 2100000, guid: 463052f3f7389124f9e7b34b0b931d0d, type: 2}
   - {fileID: 2100000, guid: c4c5f95d06932564c8672b4bafeb1b28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -5973,7 +5999,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 127bc74a6a175479ea3c5915672c9923, type: 2}
+  - {fileID: 2100000, guid: ff21ff0ea9b18924bb1fdfbb0e58f5cb, type: 2}
   - {fileID: 2100000, guid: c4c5f95d06932564c8672b4bafeb1b28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
