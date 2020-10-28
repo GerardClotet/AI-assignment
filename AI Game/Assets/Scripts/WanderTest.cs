@@ -15,10 +15,10 @@ public class WanderTest : MonoBehaviour
     NavMeshPath nav_path;
     void Start()
     {
+        //TODO ALIGN THROUGH STEERING
         agent = GetComponent<NavMeshAgent>();
         seek = GetComponent<SteeringSeek>();
         agent.updatePosition = false;
-
     }
 
     // Update is called once per frame
