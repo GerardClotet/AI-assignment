@@ -20,7 +20,10 @@ public class SpawnProjectile : MonoBehaviour
     private bool recol_turret = false;
     private bool recolback = true;
     private Vector3 originRecoilPos;
-    private Vector3 endRecoilPos; 
+    private Vector3 endRecoilPos;
+
+    //Raycasting
+    public LayerMask layer;
     void Start()
     {
         reload_time = cadence;
@@ -37,9 +40,16 @@ public class SpawnProjectile : MonoBehaviour
 
             if (reload_time <= 0)
             {
-                recol_turret = true;
-                SpawnShell();
-                reload_time = cadence;
+                
+                Vector3 dir = endPos.position - startPos.position;
+                if(!Physics.Raycast(startPos.position, dir.normalized, dir.magnitude, layer))
+                {
+                    Debug.Log("obj founded");
+                    recol_turret = true;
+                    SpawnShell();
+                    reload_time = cadence;
+                }
+               
             }
         }
         else
