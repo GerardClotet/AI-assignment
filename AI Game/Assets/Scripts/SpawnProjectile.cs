@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//TODO FIX PROJECTILE ORIENTATION
 public class SpawnProjectile : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -9,6 +9,9 @@ public class SpawnProjectile : MonoBehaviour
     public Transform startPos;
     public Transform endPos;
 
+    //reload
+    public float cadence = 4f;
+    private float reload_time;
     //recoil
     public GameObject turret;
     public float recoilSpeed=7f;
@@ -17,9 +20,10 @@ public class SpawnProjectile : MonoBehaviour
     private bool recol_turret = false;
     private bool recolback = true;
     private Vector3 originRecoilPos;
-    private Vector3 endRecoilPos;
+    private Vector3 endRecoilPos; 
     void Start()
     {
+        reload_time = cadence;
         //GameObject objShell = Instantiate(shell, startPos.position, Quaternion.identity) as GameObject;
         //RotateTo(objShell, endPos.position);
     }
@@ -27,12 +31,15 @@ public class SpawnProjectile : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        reload_time -= Time.deltaTime;
         if (!recol_turret)
         {
-            if (Input.GetMouseButtonDown(0))
+
+            if (reload_time <= 0)
             {
                 recol_turret = true;
                 SpawnShell();
+                reload_time = cadence;
             }
         }
         else
@@ -82,6 +89,8 @@ public class SpawnProjectile : MonoBehaviour
 
     private void GetPositions()
     {
+        //TODO CHECK A LOOK TO PROPER RECOIL 
+
 
         //originRecoilPos = turret.transform.localPosition;
         //endRecoilPos = originRecoilPos;
