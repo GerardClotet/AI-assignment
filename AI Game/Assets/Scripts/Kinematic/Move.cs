@@ -4,9 +4,14 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
 
-	public GameObject target;
+    //TODO
+    //need to delete-----
+    public GameObject target;
 	public GameObject aim;
 	public Slider arrow;
+    //need to delete-----
+
+
 	public float max_mov_speed = 5.0f;
 	public float max_mov_acceleration = 0.1f;
 	public float max_rot_speed = 10.0f; // in degrees / second

@@ -13,7 +13,7 @@ public class SteeringSeek : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		Steer(move.target.transform.position);
+		//Steer(move.target.transform.position);
 	}
 
 	public void Steer(Vector3 target)
