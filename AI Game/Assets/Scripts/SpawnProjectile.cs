@@ -44,7 +44,6 @@ public class SpawnProjectile : MonoBehaviour
                 Vector3 dir = endPos.position - startPos.position;
                 if(!Physics.Raycast(startPos.position, dir.normalized, dir.magnitude, layer))
                 {
-                    Debug.Log("obj founded");
                     recol_turret = true;
                     SpawnShell();
                     reload_time = cadence;
