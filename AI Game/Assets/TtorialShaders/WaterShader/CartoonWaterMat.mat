@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CartoonWaterMat
+  m_Shader: {fileID: 4800000, guid: 83679e1119c52124fa005595eebb9ffd, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_2385F87B: 5
+    - Vector1_2C02A5FB: 18.1
+    - Vector1_327BA330: 1.21
+    - Vector1_3AD5FDAD: 6.66
+    - Vector1_5D7E80AB: 0.27
+    - Vector1_76B21613: 5.87
+    - Vector1_875276E7: 0.7
+    - Vector1_9E7450EF: 0.1
+    - Vector1_A6CB10B5: 0.5
+    - Vector1_BDCC555F: 0.96
+    - Vector1_CF57E3BE: 0.67
+    - Vector1_E9BA7CFF: 0
+    - Vector1_FA22F3C3: 0
+    m_Colors:
+    - Color_3CBFD7E5: {r: 0, g: 0.30727696, b: 1, a: 0}
+    - Color_4D0054B3: {r: 0, g: 1.5058824, b: 1.3803922, a: 0}
+    - Color_58071C51: {r: 0, g: 0.66026163, b: 1, a: 0}
+    - Color_BF2E8925: {r: 1.6126615, g: 0.14453094, b: 1.3193479, a: 0}
+    - Color_EFEFBC3: {r: 0, g: 0.09454933, b: 0.5019608, a: 0}
+    - Vector2_C13997B9: {r: 0.1, g: 0.1, b: 0, a: 0}

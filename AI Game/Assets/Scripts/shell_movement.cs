@@ -8,6 +8,9 @@ public class shell_movement : MonoBehaviour
 
     public float speed;
     public float lifeTime = 10;
+    public GameObject ImpactPrefab;
+
+    private string[] names = new string[] { "RedTank", "BlueTank" };
     void Start()
     {
         
@@ -25,5 +28,27 @@ public class shell_movement : MonoBehaviour
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0f)
             Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+       // speed = 0;
+        Debug.Log("Impacted");
+        if(ImpactPrefab != null)//Instantiate impact vfx
+        {
+            
+        }
+
+        for( int i =0; i < names.Length; i++)
+        {
+            if(names[i] == collision.gameObject.name)
+            {
+                Debug.Log("Tank Impact");
+            }
+        }
+        
+        if(collision.gameObject.tag != "Projectile")
+            Destroy(gameObject);
+
     }
 }
