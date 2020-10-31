@@ -4571,9 +4571,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tank1: {fileID: 653852214}
   tank2: {fileID: 1579789855}
-  layer:
-    serializedVersion: 2
-    m_Bits: 1024
+  maxSize: 33
+  minSize: 13
 --- !u!114 &1391056266
 MonoBehaviour:
   m_ObjectHideFlags: 0

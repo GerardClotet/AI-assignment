@@ -10,42 +10,82 @@ public class CameraControl : MonoBehaviour
     public GameObject tank1;
     public GameObject tank2;
     private RaycastHit rayhit;
-    public LayerMask layer;
+    public float maxSize=33f;
+    public float minSize = 13f;
+    private Vector3 max_dist;
     void Start()
     {
         cam = GetComponent<Camera>();
+
+
+         max_dist = tank1.transform.position - tank2.transform.position;
+        //Original & max distance the cam will take in account to zoom in n out
+         //max_dist = GetMidPoint();
+         AdjustCamSize();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetMidPoint();
+        UpdateMidPoint();
+       // GetMidPoint();
     }
-    private void GetMidPoint()
-    {
-        //Vector3 sum = Vector3.zero;
-        //sum += tank1.transform.position;
-        //sum += tank2.transform.position;
 
+    private void UpdateMidPoint()
+    {
+        Vector3 temp = GetMidPoint();
+
+        //adjust orographic size
+        AdjustCamSize();
+
+        //TRIGONOMETRI MASTER 
+        float B = 180 - 90 - cam.transform.rotation.eulerAngles.x;
+        float b = cam.transform.position.y;
+        float c = b * (Mathf.Cos(B * Mathf.Deg2Rad) / Mathf.Sin(B * Mathf.Deg2Rad));
+        Debug.Log(c);
+        temp.z -= c;
+        cam.transform.position = temp;
+
+        //change this
+        //cam.orthographicSize = temp.magnitude / 5;
+    }
+    private Vector3 GetMidPoint()
+    {
         Vector3 temp = Vector3.zero;
         temp += tank1.transform.position;
         temp += tank2.transform.position;
         temp /= 2;
         Vector3 tst = cam.transform.rotation * temp;
 
+        //
         temp.y = cam.transform.position.y;
 
+        return temp;      
+    }
 
-        //TRIGONOMETRI MASTER 
-        float B = 180 - 90 - cam.transform.rotation.eulerAngles.x;
-        float b = cam.transform.position.y;
-        float c = b * (Mathf.Cos(B * Mathf.Deg2Rad) / Mathf.Sin(B*Mathf.Deg2Rad));
-        Debug.Log(c);
-        temp.z -= c;
-        cam.transform.position = temp;
+    private void AdjustCamSize()
+    {
+
+        Vector3 distance = tank1.transform.position - tank2.transform.position;
+        float mg_dist = distance.magnitude;
+
+        float percentagedist = (mg_dist * 100) / max_dist.magnitude;
+
+        float cam_size = percentagedist * maxSize / 100;
+
+        cam.orthographicSize = cam_size;
+        if (cam_size > maxSize)
+            cam.orthographicSize = maxSize;
+
+        else if (cam_size < minSize)
+            cam.orthographicSize = minSize;
+
+        else cam.orthographicSize = cam_size;
 
 
     }
+
 
 
     //private void OnDrawGizmosSelected()
