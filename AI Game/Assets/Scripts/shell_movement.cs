@@ -66,14 +66,18 @@ public class shell_movement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-       // speed = 0;
+        speed = 0;
+        ContactPoint contact = collision.contacts[0];
+        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+        Vector3 pos = contact.point;
         Debug.Log("Impacted");
         if(ImpactPrefab != null)//Instantiate impact vfx
         {
-            
+            GameObject impactVFX = Instantiate(ImpactPrefab, pos, rot) as GameObject;
+
         }
 
-        for( int i =0; i < names.Length; i++)
+        for ( int i =0; i < names.Length; i++)
         {
             if(names[i] == collision.gameObject.name)
             {
