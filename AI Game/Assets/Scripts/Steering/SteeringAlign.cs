@@ -8,7 +8,9 @@ public class SteeringAlign : MonoBehaviour {
 	public float time_to_accel = 0.1f;
 
 	Move move;
+    private Vector3 target = Vector3.zero;
 
+    private float diff_absolute =0f;
 	// Use this for initialization
 	void Start () {
 		move = GetComponent<Move>();
@@ -18,10 +20,10 @@ public class SteeringAlign : MonoBehaviour {
 	void Update () 
 	{
 		// Orientation we are trying to match
-        float delta_angle = Vector3.SignedAngle(transform.forward, move.target.transform.forward, new Vector3(0.0f, 1.0f, 0.0f));
+        float delta_angle = Vector3.SignedAngle(transform.forward, target, new Vector3(0.0f, 1.0f, 0.0f));
 
 
-        float diff_absolute = Mathf.Abs(delta_angle);
+        diff_absolute = Mathf.Abs(delta_angle);
 
 		if(diff_absolute < min_angle)
 		{
@@ -42,4 +44,14 @@ public class SteeringAlign : MonoBehaviour {
 
 		move.AccelerateRotation(Mathf.Clamp(angular_acceleration, -move.max_rot_acceleration, move.max_rot_acceleration));
 	}
+
+    public void SetTarget(Vector3 vec)
+    {
+        target = vec;
+    }
+
+    public float GetDiffAbs()
+    {
+        return diff_absolute;
+    }
 }

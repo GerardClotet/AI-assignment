@@ -12,13 +12,16 @@ public class WanderTest : MonoBehaviour
     private float freq = 0f;
     // SteeringWander wander;
     SteeringSeek seek;
+    SteeringAlign aling;
     NavMeshPath nav_path;
     void Start()
     {
         //TODO ALIGN THROUGH STEERING
         agent = GetComponent<NavMeshAgent>();
         seek = GetComponent<SteeringSeek>();
+        aling = GetComponent<SteeringAlign>();
         agent.updatePosition = false;
+        //agent.updateRotation = false;
     }
 
     // Update is called once per frame
@@ -40,7 +43,10 @@ public class WanderTest : MonoBehaviour
                     // agent.SetDestination(enemyTank.transform.position);
                     agent.CalculatePath(enemyTank.transform.position, agent.path);
                 }
-                seek.Steer(agent.path.corners[0]);
+                aling.SetTarget(agent.path.corners[0]);
+
+               // if(aling.GetDiffAbs()==0f)
+                    seek.Steer(agent.path.corners[0]);
             }
 
         }
