@@ -18,7 +18,7 @@ public class shell_movement : MonoBehaviour
     private Vector3 destination = Vector3.zero;
 
     private Rigidbody rb;
-
+    private GameManager manager;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,6 +26,7 @@ public class shell_movement : MonoBehaviour
         height = Random.Range(minH, maxH);
         Launch();
 
+        manager = Camera.main.gameObject.GetComponent<GameManager>();
     }
 
     void Launch()
@@ -70,6 +71,7 @@ public class shell_movement : MonoBehaviour
         ContactPoint contact = collision.contacts[0];
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
         Vector3 pos = contact.point;
+        pos.y += 0.05f; //TODO TEST
         Debug.Log("Impacted");
         if(ImpactPrefab != null)//Instantiate impact vfx
         {
@@ -79,12 +81,25 @@ public class shell_movement : MonoBehaviour
 
         for ( int i =0; i < names.Length; i++)
         {
+            
             if(names[i] == collision.gameObject.name)
             {
-                Debug.Log("Tank Impact");
+                if (manager != null)
+                {
+                    if (i == 0)
+                        manager.DecreaseBlueTankLife(20f);
+                    else
+                        manager.DecreaseRedTankLife(20f);
+
+                }
+                
+                
             }
         }
         
+
+        
+
         if(collision.gameObject.tag != "Projectile")
             Destroy(gameObject);
 
