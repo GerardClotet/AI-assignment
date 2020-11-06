@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    //public GameObject redTank;
-    //public GameObject blueTank;
+    public GameObject redTank;
+    public GameObject blueTank;
     private float redTankLife = 100f;
     private float blueTankLife = 100f;
+  
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -21,14 +22,22 @@ public class GameManager : MonoBehaviour
         
     }
 
+    private void SetHealthSlider(float amount)
+    {
+        // redTank.byname
+    }
 
     public void DecreaseRedTankLife(float amount)
     {
         redTankLife -= amount;
+        redTank.GetComponentInChildren<Slider>().value = redTankLife;
+
     }
     public void DecreaseBlueTankLife(float amount)
     {
         blueTankLife -= amount;
+        blueTank.GetComponentInChildren<Slider>().value = redTankLife;
+
     }
 
 }

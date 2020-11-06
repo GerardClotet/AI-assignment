@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  lifeTime: 5
+  lifeTime: 10
   ImpactPrefab: {fileID: 6228887330807169075, guid: 4bae421ff435e6f4c8189128c50fb2db,
     type: 3}
   minH: 5
