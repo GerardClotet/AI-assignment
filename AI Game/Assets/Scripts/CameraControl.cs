@@ -43,7 +43,6 @@ public class CameraControl : MonoBehaviour
         float B = 180 - 90 - cam.transform.rotation.eulerAngles.x;
         float b = cam.transform.position.y;
         float c = b * (Mathf.Cos(B * Mathf.Deg2Rad) / Mathf.Sin(B * Mathf.Deg2Rad));
-        Debug.Log(c);
         temp.z -= c;
         cam.transform.position = temp;
 

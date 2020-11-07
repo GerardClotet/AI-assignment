@@ -84,6 +84,7 @@ public class SpawnProjectile : MonoBehaviour
     {
         GameObject objShell = Instantiate(shell, startPos.position, Quaternion.identity) as GameObject;
         RotateTo(objShell, endPos.position);
+        // TODO SET HERE THE SHELL DAMAGE
         objShell.GetComponent<shell_movement>().SetDestination(endPos.position);
         GetPositions();
         //Recoil();

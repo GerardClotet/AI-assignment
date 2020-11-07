@@ -17,6 +17,7 @@ public class shell_movement : MonoBehaviour
     private string[] names = new string[] { "RedTank", "BlueTank" };
     private Vector3 destination = Vector3.zero;
 
+    public float shellDmg = 20f;
     private Rigidbody rb;
     private GameManager manager;
     void Start()
@@ -33,7 +34,6 @@ public class shell_movement : MonoBehaviour
     {
         Physics.gravity = Vector3.up * gravity;
         rb.useGravity = true;
-        print(CalculateLaunchVelocity());
         rb.velocity = CalculateLaunchVelocity();
     }
     Vector3 CalculateLaunchVelocity()
@@ -87,9 +87,9 @@ public class shell_movement : MonoBehaviour
                 if (manager != null)
                 {
                     if (i == 0)
-                        manager.DecreaseBlueTankLife(20f);
+                        manager.DecreaseBlueTankLife(shellDmg);
                     else
-                        manager.DecreaseRedTankLife(20f);
+                        manager.DecreaseRedTankLife(shellDmg);
 
                 }
                 
@@ -108,5 +108,11 @@ public class shell_movement : MonoBehaviour
     public void SetDestination(Vector3 dest)
     {
         destination = dest;
+    }
+
+
+    public void SetShellDamage(float dmg)
+    {
+        shellDmg = dmg;
     }
 }
