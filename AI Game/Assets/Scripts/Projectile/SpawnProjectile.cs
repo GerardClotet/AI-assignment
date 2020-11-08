@@ -45,11 +45,13 @@ public class SpawnProjectile : MonoBehaviour
                 if(!Physics.Raycast(startPos.position, dir.normalized, dir.magnitude, layer))
                 {
                     recol_turret = true;
-                    if (Random.Range(1, 10) == 1)
-                        SpawnMegaShell();
-                    else SpawnShell();
+                    //TODO QUIT
+                    //if (Random.Range(1, 10) == 1)
+                    //    SpawnMegaShell();
+                    //else SpawnShell();
 
-                    SpawnShell();
+                    SpawnMegaShell();
+
                     reload_time = cadence;
                 }
                
@@ -99,9 +101,14 @@ public class SpawnProjectile : MonoBehaviour
     void SpawnMegaShell()
     {
         GameObject objShell = Instantiate(megaShell, startPos.position, Quaternion.identity) as GameObject;
+        
+
         RotateTo(objShell, endPos.position);
+
         // TODO SET HERE THE SHELL DAMAGE
-        objShell.GetComponent<shell_movement>().SetDestination(endPos.position);
+        objShell.GetComponent<MegaShell_movement>().SetDestination(endPos.position);
+        objShell.GetComponent<MegaShell_movement>().SetTarget(endPos.gameObject);
+
         GetPositions();
         //Recoil();
     }

@@ -17,11 +17,10 @@ public class shell_movement : MonoBehaviour
     private string[] names = new string[] { "RedTank", "BlueTank" };
     private Vector3 destination = Vector3.zero;
 
-    public float shellDmg = 20f;
+    public float shellDmg = 10f;
     private Rigidbody rb;
     private GameManager manager;
 
-    private bool isMega = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -60,10 +59,6 @@ public class shell_movement : MonoBehaviour
 
 
         transform.rotation = Quaternion.LookRotation(rb.velocity);
-        //if(speed !=0)
-        //{
-        //    gameObject.transform.position += transform.forward * (speed * Time.deltaTime);
-        //}
 
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0f)
@@ -122,8 +117,5 @@ public class shell_movement : MonoBehaviour
     }
 
 
-    public void SetShellType(bool megashell)
-    {
-        isMega = megashell;
-    }
+
 }
