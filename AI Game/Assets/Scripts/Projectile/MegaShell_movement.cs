@@ -27,6 +27,7 @@ public class MegaShell_movement : MonoBehaviour
 
     private GameObject target;
 
+    private Vector3 shake_originalPos = Vector3.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,10 +64,14 @@ public class MegaShell_movement : MonoBehaviour
             rb.useGravity = false;
             //Instantiate fire
             gameObject.transform.Find("Fire").gameObject.SetActive(true);
+            shake_originalPos = transform.position;
         }
          //cargando proyectil
         else if(rb.velocity == Vector3.zero)
         {
+
+            if(channelingPowerTime >0)
+                ShakeObj(shake_originalPos);
             channelingPowerTime -= Time.deltaTime;
             if(SoundOnce == false)
             {
@@ -168,5 +173,18 @@ public class MegaShell_movement : MonoBehaviour
     public void SetDestination(Vector3 dest)
     {
         destination = dest;
+    }
+
+    private void ShakeObj(Vector3 originalpos)
+    {
+        float speed = 50.0f;
+        float amount = 0.05f;
+
+        Vector3 newpos;
+        newpos.x = originalpos.x + Mathf.Sin(Time.time * speed) * amount;
+        newpos.y = originalpos.y + Mathf.Sin(Time.time * speed) * amount;
+        newpos.z = originalpos.z + Mathf.Sin(Time.time * speed) * amount;
+
+        gameObject.transform.position = newpos;
     }
 }

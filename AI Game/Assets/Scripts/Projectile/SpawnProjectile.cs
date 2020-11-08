@@ -46,10 +46,10 @@ public class SpawnProjectile : MonoBehaviour
                 if(!Physics.Raycast(startPos.position, dir.normalized, dir.magnitude, layer))
                 {
                     recol_turret = true;
-                    //TODO QUIT
                     if (Random.Range(1, 5) == 1)
                         SpawnMegaShell();
                     else SpawnShell();
+
 
                     reload_time = cadence;
                 }

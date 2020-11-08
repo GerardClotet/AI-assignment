@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Escape))
+            Application.Quit();
         if( redTankLife <= 0f || blueTankLife <= 0f)
         {
             Scene scene = SceneManager.GetActiveScene();

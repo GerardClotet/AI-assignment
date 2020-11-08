@@ -1217,7 +1217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7567263451828811, guid: 18b019f74dc96584b92cbb5dbc4930ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.3
+      value: 62.6
       objectReference: {fileID: 0}
     - target: {fileID: 7567263451828811, guid: 18b019f74dc96584b92cbb5dbc4930ad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1225,7 +1225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7567263451828811, guid: 18b019f74dc96584b92cbb5dbc4930ad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 108.4
+      value: 86.31
       objectReference: {fileID: 0}
     - target: {fileID: 7567263451828811, guid: 18b019f74dc96584b92cbb5dbc4930ad, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6043,7 +6043,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8bf563eb82f68734daa29d03478cac03, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.433
+  m_Volume: 0.104
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11989,6 +11989,7 @@ GameObject:
   - component: {fileID: 1391056265}
   - component: {fileID: 1391056266}
   - component: {fileID: 1391056267}
+  - component: {fileID: 1391056268}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -12174,6 +12175,102 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redTank: {fileID: 653852214}
   blueTank: {fileID: 1579789855}
+--- !u!82 &1391056268
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391056259}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0c4e79f1602ffae4397f262aee59c52c, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.424
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1408905145
 GameObject:
   m_ObjectHideFlags: 0
@@ -13322,27 +13419,27 @@ MonoBehaviour:
   sounds:
   - name: TankShoot
     clip: {fileID: 8300000, guid: 727fb8de85de3e94db65024fc711a754, type: 3}
-    volume: 1
+    volume: 0.326
     pitch: 1
     source: {fileID: 0}
   - name: TankImpact
     clip: {fileID: 8300000, guid: 1ae9c3ef31cb7bf4ca98ba2ad2959fb4, type: 3}
-    volume: 1
+    volume: 0.395
     pitch: 1
     source: {fileID: 0}
   - name: ChargingShell
     clip: {fileID: 8300000, guid: b4eeae382bdfc5b46bf88813fedf703d, type: 3}
-    volume: 1
+    volume: 0.411
     pitch: 1
     source: {fileID: 0}
   - name: MegaShellShoot
     clip: {fileID: 8300000, guid: 468ea8f7a2a3b024889ac63824d893bf, type: 3}
-    volume: 1
+    volume: 0.535
     pitch: 1
     source: {fileID: 0}
   - name: MegaShellStart
     clip: {fileID: 8300000, guid: 48071db141de4d845824693b0a64c11a, type: 3}
-    volume: 1
+    volume: 0.354
     pitch: 1
     source: {fileID: 0}
 --- !u!4 &1536391543
@@ -13709,7 +13806,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8bf563eb82f68734daa29d03478cac03, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.494
+  m_Volume: 0.158
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -19009,7 +19106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7576086218354086182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.58, y: 15.68, z: -17.69}
+  m_LocalPosition: {x: 8.58, y: 23.7, z: -17.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6506514800327402076}
@@ -28819,7 +28916,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2697563629809633350}
   m_LocalRotation: {x: -0.5362698, y: -0, z: -0, w: 0.8440466}
-  m_LocalPosition: {x: 0, y: 41.31, z: -0.65999985}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 266403607802808794}
