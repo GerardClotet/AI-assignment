@@ -6043,13 +6043,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8bf563eb82f68734daa29d03478cac03, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.817
+  m_Volume: 0.433
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 155
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -6087,7 +6087,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -13325,6 +13325,26 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: TankImpact
+    clip: {fileID: 8300000, guid: 1ae9c3ef31cb7bf4ca98ba2ad2959fb4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: ChargingShell
+    clip: {fileID: 8300000, guid: b4eeae382bdfc5b46bf88813fedf703d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: MegaShellShoot
+    clip: {fileID: 8300000, guid: 468ea8f7a2a3b024889ac63824d893bf, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: MegaShellStart
+    clip: {fileID: 8300000, guid: 48071db141de4d845824693b0a64c11a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &1536391543
 Transform:
   m_ObjectHideFlags: 0
@@ -13689,13 +13709,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8bf563eb82f68734daa29d03478cac03, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.793
+  m_Volume: 0.494
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 158
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -13733,7 +13753,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.878
       inSlope: 0
       outSlope: 0
       tangentMode: 0

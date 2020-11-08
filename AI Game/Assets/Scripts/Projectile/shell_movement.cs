@@ -73,9 +73,11 @@ public class shell_movement : MonoBehaviour
         Vector3 pos = contact.point;
         pos.y += 0.05f; //TODO TEST
         Debug.Log("Impacted");
-        if(ImpactPrefab != null)//Instantiate impact vfx
+        FindObjectOfType<AudioManager>().Play("TankImpact");
+        if (ImpactPrefab != null)//Instantiate impact vfx
         {
             GameObject impactVFX = Instantiate(ImpactPrefab, pos, rot) as GameObject;
+           
 
         }
 

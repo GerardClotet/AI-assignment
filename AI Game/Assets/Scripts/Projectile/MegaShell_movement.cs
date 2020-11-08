@@ -20,6 +20,9 @@ public class MegaShell_movement : MonoBehaviour
     private float height = 7.97f;
     public float gravity = -18f;
 
+    private bool SoundOnce = false;
+    private bool SoundOnce2 = false;
+
     private float channelingPowerTime = 2.5f;
 
     private GameObject target;
@@ -61,17 +64,27 @@ public class MegaShell_movement : MonoBehaviour
             //Instantiate fire
             gameObject.transform.Find("Fire").gameObject.SetActive(true);
         }
-
+         //cargando proyectil
         else if(rb.velocity == Vector3.zero)
         {
             channelingPowerTime -= Time.deltaTime;
+            if(SoundOnce == false)
+            {
+                FindObjectOfType<AudioManager>().Play("ChargingShell");
+                SoundOnce = true;
+            }
 
-            
         }
+        //salir disparado
         if (channelingPowerTime <= 0)
         {
             gameObject.transform.Find("ShockWave").gameObject.SetActive(true);
-
+            channelingPowerTime -= Time.deltaTime;
+            if (SoundOnce2 == false)
+            {
+                FindObjectOfType<AudioManager>().Play("MegaShellShoot");
+                SoundOnce2 = true;
+            }
             if (target != null)
             {
                 Vector3 dir = target.transform.position - transform.position;
@@ -118,9 +131,11 @@ public class MegaShell_movement : MonoBehaviour
         Vector3 pos = contact.point;
         pos.y += 0.05f; //TODO TEST
         Debug.Log("Impacted");
+        FindObjectOfType<AudioManager>().Play("MegaShellStart");
         if (ImpactPrefab != null)//Instantiate impact vfx
         {
             GameObject impactVFX = Instantiate(ImpactPrefab, pos, rot) as GameObject;
+            
 
         }
 
