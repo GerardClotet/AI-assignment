@@ -47,8 +47,10 @@ public class MegaShell_movement : MonoBehaviour
 
         else
         {
-            if(target !=null)
-                transform.rotation = Quaternion.LookRotation(target.transform.position);
+            if (target != null)
+                transform.LookAt(target.transform);
+                //transform.rotation.SetLookRotation(target.transform.rotation.eulerAngles);/*/ = Quaternion.LookRotation(target.transform.position);*/Debug.Log("Looking rot");
+
         }
 
 
@@ -57,16 +59,25 @@ public class MegaShell_movement : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.useGravity = false;
             //Instantiate fire
+            gameObject.transform.Find("Fire").gameObject.SetActive(true);
         }
 
         else if(rb.velocity == Vector3.zero)
         {
             channelingPowerTime -= Time.deltaTime;
 
+            
         }
         if (channelingPowerTime <= 0)
         {
-            gameObject.transform.position += transform.forward * (speed*10 * Time.deltaTime);
+            gameObject.transform.Find("ShockWave").gameObject.SetActive(true);
+
+            if (target != null)
+            {
+                Vector3 dir = target.transform.position - transform.position;
+                gameObject.transform.position += dir.normalized * (speed * Time.deltaTime);
+            }
+            
         }
 
         lifeTime -= Time.deltaTime;

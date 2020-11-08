@@ -46,11 +46,10 @@ public class SpawnProjectile : MonoBehaviour
                 {
                     recol_turret = true;
                     //TODO QUIT
-                    //if (Random.Range(1, 10) == 1)
-                    //    SpawnMegaShell();
-                    //else SpawnShell();
+                    if (Random.Range(1, 5) == 1)
+                        SpawnMegaShell();
+                    else SpawnShell();
 
-                    SpawnMegaShell();
 
                     reload_time = cadence;
                 }
