@@ -13319,6 +13319,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663fca998daef3647a650a6e5062ff1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sounds:
+  - name: TankShoot
+    clip: {fileID: 8300000, guid: 727fb8de85de3e94db65024fc711a754, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &1536391543
 Transform:
   m_ObjectHideFlags: 0

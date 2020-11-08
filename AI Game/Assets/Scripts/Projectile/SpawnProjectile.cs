@@ -27,6 +27,7 @@ public class SpawnProjectile : MonoBehaviour
     void Start()
     {
         reload_time = cadence;
+       
         //GameObject objShell = Instantiate(shell, startPos.position, Quaternion.identity) as GameObject;
         //RotateTo(objShell, endPos.position);
     }
@@ -92,6 +93,7 @@ public class SpawnProjectile : MonoBehaviour
         // TODO SET HERE THE SHELL DAMAGE
         objShell.GetComponent<shell_movement>().SetDestination(endPos.position);
         GetPositions();
+        FindObjectOfType<AudioManager>().Play("TankShoot");
         //Recoil();
 
     }
