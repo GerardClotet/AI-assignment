@@ -50,7 +50,6 @@ public class SpawnProjectile : MonoBehaviour
                         SpawnMegaShell();
                     else SpawnShell();
 
-
                     reload_time = cadence;
                 }
                
