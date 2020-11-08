@@ -5,6 +5,7 @@ public class SpawnProjectile : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject shell;
+    public GameObject megaShell;
     public Transform startPos;
     public Transform endPos;
 
@@ -14,7 +15,7 @@ public class SpawnProjectile : MonoBehaviour
     //recoil
     public GameObject turret;
     public float recoilSpeed=7f;
-    private float recoilTime = 1f; //maxtime to back & forth
+    private readonly float recoilTime = 1f; //maxtime to back & forth
     private float recoilingAmount = 0f;
     private bool recol_turret = false;
     private bool recolback = true;
@@ -44,6 +45,10 @@ public class SpawnProjectile : MonoBehaviour
                 if(!Physics.Raycast(startPos.position, dir.normalized, dir.magnitude, layer))
                 {
                     recol_turret = true;
+                    if (Random.Range(1, 10) == 1)
+                        SpawnMegaShell();
+                    else SpawnShell();
+
                     SpawnShell();
                     reload_time = cadence;
                 }
@@ -91,6 +96,15 @@ public class SpawnProjectile : MonoBehaviour
 
     }
 
+    void SpawnMegaShell()
+    {
+        GameObject objShell = Instantiate(megaShell, startPos.position, Quaternion.identity) as GameObject;
+        RotateTo(objShell, endPos.position);
+        // TODO SET HERE THE SHELL DAMAGE
+        objShell.GetComponent<shell_movement>().SetDestination(endPos.position);
+        GetPositions();
+        //Recoil();
+    }
     //This Just recoils Back  ---> TODO -> need to recoil forth
     private void Recoil()
     {

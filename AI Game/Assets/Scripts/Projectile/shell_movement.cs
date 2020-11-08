@@ -20,6 +20,8 @@ public class shell_movement : MonoBehaviour
     public float shellDmg = 20f;
     private Rigidbody rb;
     private GameManager manager;
+
+    private bool isMega = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -34,7 +36,10 @@ public class shell_movement : MonoBehaviour
     {
         Physics.gravity = Vector3.up * gravity;
         rb.useGravity = true;
-        rb.velocity = CalculateLaunchVelocity();
+        Vector3 velocity = CalculateLaunchVelocity();
+
+        if (!float.IsNaN(velocity.x) || !float.IsNaN(velocity.y) || !float.IsNaN(velocity.z))
+            rb.velocity = velocity;
     }
     Vector3 CalculateLaunchVelocity()
     {
@@ -114,5 +119,11 @@ public class shell_movement : MonoBehaviour
     public void SetShellDamage(float dmg)
     {
         shellDmg = dmg;
+    }
+
+
+    public void SetShellType(bool megashell)
+    {
+        isMega = megashell;
     }
 }
