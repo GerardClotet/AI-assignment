@@ -22,12 +22,18 @@ public class SpawnProjectile : MonoBehaviour
     private Vector3 originRecoilPos;
     private Vector3 endRecoilPos;
 
+    //Ammo Events
+    private int bullets=2; //TESTING BULLET
+    public delegate void RechargeAction();
+    public event RechargeAction OutofAmmo;
+    public bool noAmmo { get; private set; }
+
     //Raycasting
     public LayerMask layer;
     void Start()
     {
         reload_time = cadence;
-       
+        noAmmo = false;
         //GameObject objShell = Instantiate(shell, startPos.position, Quaternion.identity) as GameObject;
         //RotateTo(objShell, endPos.position);
     }
@@ -35,26 +41,39 @@ public class SpawnProjectile : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //tank_bullets >
         reload_time -= Time.deltaTime;
         if (!recol_turret)
         {
-
-            if (reload_time <= 0)
+            if (bullets != 0)
             {
-                
-                Vector3 dir = endPos.position - startPos.position;
-                if(!Physics.Raycast(startPos.position, dir.normalized, dir.magnitude, layer))
+                if (reload_time <= 0)
                 {
-                    recol_turret = true;
-                    if (Random.Range(1, 5) == 1)
-                        SpawnMegaShell();
-                    else SpawnShell();
 
+                    Vector3 dir = endPos.position - startPos.position;
+                    if (!Physics.Raycast(startPos.position, dir.normalized, dir.magnitude, layer))
+                    {
+                        recol_turret = true;
+                        if (Random.Range(1, 5) == 1)
+                            SpawnMegaShell();
+                        else SpawnShell();
 
-                    reload_time = cadence;
+                        bullets -= 1; //reduce ammo
+                        reload_time = cadence;
+                    }
+
                 }
-               
             }
+            else if(bullets ==0) {
+
+                noAmmo = true;
+                if(OutofAmmo!= null)
+                {
+                    Debug.Log("Calling Event");
+                    OutofAmmo();
+                }
+            }
+           
         }
         else
         {
@@ -132,5 +151,13 @@ public class SpawnProjectile : MonoBehaviour
         endRecoilPos = originRecoilPos;
         endRecoilPos.x *= dir.normalized.x * -15;
         endRecoilPos.z *= dir.normalized.z * -15;
+    }
+
+
+    public void SetBullets(int ammo)
+    {
+        Debug.Log(bullets);
+        bullets = ammo;
+        noAmmo = false;
     }
 }

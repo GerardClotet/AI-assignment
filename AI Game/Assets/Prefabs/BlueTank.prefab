@@ -14816,19 +14816,15 @@ GameObject:
   m_Component:
   - component: {fileID: 7449123746830803323}
   - component: {fileID: 7449123746830803313}
-  - component: {fileID: 7449123746830803314}
-  - component: {fileID: 7449123746830803315}
   - component: {fileID: 7449123746830803316}
-  - component: {fileID: 7449123746830803317}
-  - component: {fileID: 7449123746830803318}
-  - component: {fileID: 7449123746830803322}
-  - component: {fileID: 7449123746830803320}
   - component: {fileID: 7449123746830803303}
   - component: {fileID: 7449123746830803319}
   - component: {fileID: 7449123746830803321}
   - component: {fileID: 7449123746830803300}
   - component: {fileID: 7449123746830803301}
   - component: {fileID: 1579789871}
+  - component: {fileID: 1579789870}
+  - component: {fileID: 1579789862}
   m_Layer: 8
   m_Name: BlueTank
   m_TagString: Untagged
@@ -14866,33 +14862,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612fefe37772540c8bb2bcc1639f521e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7449123746830803314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7449123746830803272}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71a5519694be34ab8bb93b90947ad198, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7449123746830803315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7449123746830803272}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b13ae3cbc54e44631ae987b5486c59f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  min_distance: 0.1
-  slow_distance: 10
-  time_to_target: 0.5
 --- !u!114 &7449123746830803316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14908,89 +14877,6 @@ MonoBehaviour:
   min_angle: 1
   slow_angle: 10
   time_to_accel: 0.1
---- !u!114 &7449123746830803317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7449123746830803272}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e439e859d063a4ca9983e1f7bb60411a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  radius: 1
-  min_update: 0.5
-  max_update: 3
-  target: {fileID: 0}
---- !u!114 &7449123746830803318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7449123746830803272}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bacba9e12dcf945949586a2aa108bfdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time_to_target: 0.5
---- !u!114 &7449123746830803322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7449123746830803272}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e00aba7cc561b495a9a1faa0fad585dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  max_seconds_prediction: 5
---- !u!114 &7449123746830803320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7449123746830803272}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 782558cc3a6d845a990f61f72475c82d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mask:
-    serializedVersion: 2
-    m_Bits: 256
-  search_radius: 10
-  falloff:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!114 &7449123746830803303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15177,6 +15063,92 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1579789870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7449123746830803272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422fb6956201c7944ae2113a1a53b0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTasksPerTick: 1
+  behavior: {fileID: 11400000, guid: 02b68afd49842674a9fd43bba63a79e1, type: 2}
+  paused: 0
+  restartWhenFinished: 0
+  blackboard:
+    intParams: 
+    intParamsNames: []
+    intParamsLostDefaultValue: 
+    boolParams: 
+    boolParamsNames: []
+    boolParamsLostDefaultValue: 
+    floatParams: []
+    floatParamsNames: []
+    floatParamsLostDefaultValue: 
+    stringParams: []
+    stringParamsNames: []
+    stringParamsLostDefaultValue: 
+    colorParams: []
+    colorParamsNames: []
+    colorParamsLostDefaultValue: 
+    objectParams:
+    - {fileID: 7449123746830803272}
+    - {fileID: 0}
+    - {fileID: 7449123746728629306}
+    objectParamsNames:
+    - Tank
+    - Reload Place
+    - TANK_turret
+    objectParamsLostDefaultValue: 
+    layerMaskParams: []
+    layerMaskParamsNames: []
+    layerMaskParamsLostDefaultValue: 
+    enumParamsNames: []
+    enumParamsLostDefaultValue: 
+    vector2Params: []
+    vector2ParamsNames: []
+    vector2ParamsLostDefaultValue: 
+    vector3Params: []
+    vector3ParamsNames: []
+    vector3ParamsLostDefaultValue: 
+    vector4Params: []
+    vector4ParamsNames: []
+    vector4ParamsLostDefaultValue: 
+    rectParams: []
+    rectParamsNames: []
+    rectParamsLostDefaultValue: 
+    animationCurveParams: []
+    animationCurveParamsNames: []
+    animationCurveParamsLostDefaultValue: 
+    boundsParams: []
+    boundsParamsNames: []
+    boundsParamsLostDefaultValue: 
+    gradientParams: []
+    gradientParamsNames: []
+    gradientParamsLostDefaultValue: 
+    quaternionParams: []
+    quaternionParamsNames: []
+    quaternionParamsLostDefaultValue: 
+--- !u!54 &1579789862
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7449123746830803272}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7449123747747159914
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AgentPatrol : MonoBehaviour
 {
-    // Start is called before the first frame update
+
 
     //Patrol + navmesh
     public Transform[] points;
@@ -19,7 +19,7 @@ public class AgentPatrol : MonoBehaviour
 
     //Frewquency
     private float freq = 0f;
-    void Start()
+    public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         //agent.autoBraking = false;
@@ -44,12 +44,10 @@ public class AgentPatrol : MonoBehaviour
             destPoint = 0;
 
     }
-    // Update is called once per frame
-    void Update()
-    {
-        // Choose the next destination point when the agent gets
-        // close to the current one.
 
+
+    public void DoAction()
+    {
         if (agent != null)
         {
             if (!agent.pathPending && agent.remainingDistance < 0.5f)
@@ -72,4 +70,32 @@ public class AgentPatrol : MonoBehaviour
 
         }
     }
+    // Update is called once per frame
+    //public void Update()
+    //{
+    //    // Choose the next destination point when the agent gets
+    //    // close to the current one.
+
+    //    if (agent != null)
+    //    {
+    //        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+    //        {
+    //            GotoNextPoint();
+    //        }
+
+    //        if (!agent.pathPending)
+    //        {
+    //            freq += Time.deltaTime;
+
+    //            if (freq >= 0.5)
+    //            {
+    //                freq -= .5f;
+    //                agent.CalculatePath(seekdest, agent.path);
+    //            }
+
+    //            seek.Steer(agent.path.corners[0]);
+    //        }
+
+    //    }
+    //}
 }
