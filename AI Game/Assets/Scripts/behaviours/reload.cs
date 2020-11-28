@@ -19,11 +19,37 @@ public class reloadCondition : ConditionBase
         if (SearchAmmo())
             return spawnProjectile.noAmmo;
         else
-            return false;
+        {
+            return false; //Here we can make the tank shoot
+        }
        
         //If returns true it means there is no ammo so it goes for ammmo in his task below in the BBnode
     }
+    public override TaskStatus MonitorCompleteWhenTrue()
+    {
+        //Enters when there is ammo
+        if (spawnProjectile != null)
+            spawnProjectile.KeepShooting += Shoot;
 
+        
+        Debug.Log("MonitorCompleteWhenTrue");
+        return base.MonitorCompleteWhenTrue();
+    }
+    public override TaskStatus MonitorFailWhenFalse()
+    {
+        //Enters when there isnt ammo
+        if (spawnProjectile != null)
+            spawnProjectile.KeepShooting -= Shoot;
+
+
+        Debug.Log("MonitorFailWhenFalse");
+        return base.MonitorFailWhenFalse();
+    }
+    //public override TaskStatus MonitorFailWhenFalse()
+    //{
+    //    Debug.Log("MonitorCompleteWhenTrue");
+    //    return TaskStatus.SUSPENDED;
+    //}
     //public void AmmoAdquired() //
     //{
     //    spawnProjectile.OutofAmmo -= Recharge; //Unsubscribe event
@@ -44,7 +70,7 @@ public class reloadCondition : ConditionBase
     //    }
     //    // return base.MonitorCompleteWhenTrue();
     //}
-    void Recharge()
+    void Shoot()
     {
         Debug.Log("ei");
         //called when there is no ammo

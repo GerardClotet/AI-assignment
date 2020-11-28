@@ -25,11 +25,12 @@ public class WanderTest : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+
+    public void DoAtion()
     {
-        if(agent != null)
+        if (agent != null)
         {
-            if(!agent.pathPending)
+            if (!agent.pathPending)
             {
                 agent.destination = enemyTank.transform.position;
             }
@@ -45,11 +46,10 @@ public class WanderTest : MonoBehaviour
                 }
                 aling.SetTarget(agent.path.corners[0]);
 
-               // if(aling.GetDiffAbs()==0f)
-                    seek.Steer(agent.path.corners[0]);
+                // if(aling.GetDiffAbs()==0f)
+                seek.Steer(agent.path.corners[0]);
             }
 
         }
-
     }
 }

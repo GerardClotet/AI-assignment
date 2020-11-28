@@ -25,7 +25,7 @@ public class SpawnProjectile : MonoBehaviour
     //Ammo Events
     private int bullets=2; //TESTING BULLET
     public delegate void RechargeAction();
-    public event RechargeAction OutofAmmo;
+    public event RechargeAction KeepShooting;
     public bool noAmmo { get; private set; }
 
     //Raycasting
@@ -47,6 +47,7 @@ public class SpawnProjectile : MonoBehaviour
         {
             if (bullets != 0)
             {
+
                 if (reload_time <= 0)
                 {
 
@@ -60,6 +61,12 @@ public class SpawnProjectile : MonoBehaviour
 
                         bullets -= 1; //reduce ammo
                         reload_time = cadence;
+
+                        if (KeepShooting != null)
+                        {
+                            //Debug.Log("Calling Event");
+                            KeepShooting();
+                        }
                     }
 
                 }
@@ -67,11 +74,7 @@ public class SpawnProjectile : MonoBehaviour
             else if(bullets ==0) {
 
                 noAmmo = true;
-                if(OutofAmmo!= null)
-                {
-                    Debug.Log("Calling Event");
-                    OutofAmmo();
-                }
+ 
             }
            
         }

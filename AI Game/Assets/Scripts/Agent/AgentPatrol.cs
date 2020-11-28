@@ -14,7 +14,6 @@ public class AgentPatrol : MonoBehaviour
 
     //Seek
     public SteeringSeek seek;
-    private bool seekpoint = false;
     private Vector3 seekdest;
 
     //Frewquency
