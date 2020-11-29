@@ -14,7 +14,7 @@ public class SpawnProjectile : MonoBehaviour
     private float reload_time;
     //recoil
     public GameObject turret;
-    public float recoilSpeed=7f;
+    public float recoilSpeed = 7f;
     private readonly float recoilTime = 1f; //maxtime to back & forth
     private float recoilingAmount = 0f;
     private bool recol_turret = false;
@@ -23,9 +23,12 @@ public class SpawnProjectile : MonoBehaviour
     private Vector3 endRecoilPos;
 
     //Ammo Events
-    private int bullets=2; //TESTING BULLET
+    private int bullets = 2; //TESTING BULLET
     public delegate void RechargeAction();
-    public event RechargeAction KeepShooting;
+    public event RechargeAction NoBullets;
+
+    public GameObject exclamation;
+
     public bool noAmmo { get; private set; }
 
     //Raycasting
@@ -48,6 +51,11 @@ public class SpawnProjectile : MonoBehaviour
             if (bullets != 0)
             {
 
+                if(exclamation != null)
+                    if (exclamation.activeSelf)
+                        exclamation.SetActive(false);
+
+
                 if (reload_time <= 0)
                 {
 
@@ -62,11 +70,7 @@ public class SpawnProjectile : MonoBehaviour
                         bullets -= 1; //reduce ammo
                         reload_time = cadence;
 
-                        if (KeepShooting != null)
-                        {
-                            //Debug.Log("Calling Event");
-                            KeepShooting();
-                        }
+
                     }
 
                 }
@@ -74,7 +78,20 @@ public class SpawnProjectile : MonoBehaviour
             else if(bullets ==0) {
 
                 noAmmo = true;
- 
+
+
+                if (exclamation != null)
+                {
+                    if (!exclamation.activeSelf)
+                        exclamation.SetActive(true);
+                }
+
+                if (NoBullets != null)
+                {
+                    //Debug.Log("Calling Event");
+                    NoBullets();
+                }
+
             }
            
         }
@@ -162,5 +179,27 @@ public class SpawnProjectile : MonoBehaviour
         Debug.Log(bullets);
         bullets = ammo;
         noAmmo = false;
+    }
+
+
+    public GameObject FindChildByName(string name)
+    {
+        Transform[] iter = gameObject.GetComponentsInChildren<Transform>();
+        if (iter != null)
+        {
+            for (int i = 0; i < iter.Length; i++)
+            {
+                if (name == iter[i].gameObject.name)
+                    return iter[i].gameObject;
+
+                else if (iter[i].gameObject.GetComponentsInChildren<Transform>() != null)
+                    FindChildByName(name);
+
+            }
+        }
+
+
+        return null;
+
     }
 }

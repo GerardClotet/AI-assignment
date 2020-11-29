@@ -14,6 +14,8 @@ public class goForAmmo : GOAction
 
     private NavMeshAgent agent;
     private SteeringSeek seek;
+    private float freq = 0f;
+
    // private 
     // Start is called before the first frame update
     public override void OnStart()
@@ -40,9 +42,8 @@ public class goForAmmo : GOAction
 
         else GoToPoint();
 
-        base.OnUpdate();
+       // base.OnUpdate();
         return TaskStatus.RUNNING;
-
 
     }
 
@@ -57,9 +58,14 @@ public class goForAmmo : GOAction
 
             if (!agent.pathPending)
             {
-                
+                freq += Time.deltaTime;
+
+                if (freq >= 0.5f)
+                {
                     // agent.SetDestination(enemyTank.transform.position);
                     agent.CalculatePath(reload_place.position, agent.path);
+                    freq = 0f;
+                }
                 
                 //aling.SetTarget(agent.path.corners[0]);
 

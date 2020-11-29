@@ -28,21 +28,17 @@ public class reloadCondition : ConditionBase
     public override TaskStatus MonitorCompleteWhenTrue()
     {
         //Enters when there is ammo
-        if (spawnProjectile != null)
-            spawnProjectile.KeepShooting += Shoot;
+
 
         
-        Debug.Log("MonitorCompleteWhenTrue");
         return base.MonitorCompleteWhenTrue();
     }
     public override TaskStatus MonitorFailWhenFalse()
     {
         //Enters when there isnt ammo
-        if (spawnProjectile != null)
-            spawnProjectile.KeepShooting -= Shoot;
+      
 
 
-        Debug.Log("MonitorFailWhenFalse");
         return base.MonitorFailWhenFalse();
     }
     //public override TaskStatus MonitorFailWhenFalse()
@@ -70,11 +66,7 @@ public class reloadCondition : ConditionBase
     //    }
     //    // return base.MonitorCompleteWhenTrue();
     //}
-    void Shoot()
-    {
-        Debug.Log("ei");
-        //called when there is no ammo
-    }
+
 
     private bool SearchAmmo()
     {

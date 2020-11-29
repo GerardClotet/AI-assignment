@@ -13,7 +13,6 @@ public class patrol : GOAction
     [InParam("Tank")]
     public GameObject tank;
 
-
     private AgentPatrol a_patrol;
     public override void OnStart()
     {
@@ -22,7 +21,6 @@ public class patrol : GOAction
             a_patrol = tank.GetComponent<AgentPatrol>();
 
         //a_patrol.Start();
-
         base.OnStart();
     }
 
