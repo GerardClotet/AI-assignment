@@ -6,6 +6,7 @@ public class SpawnProjectile : MonoBehaviour
     // Start is called before the first frame update
     public GameObject shell;
     public GameObject megaShell;
+    public GameObject dimensionalShell;
     public Transform startPos;
     public Transform endPos;
 
@@ -63,6 +64,8 @@ public class SpawnProjectile : MonoBehaviour
                     if (!Physics.Raycast(startPos.position, dir.normalized, dir.magnitude, layer))
                     {
                         recol_turret = true;
+
+  //                      SpawnDimensionalShell(); //TODO REPLACE
                         if (Random.Range(1, 5) == 1)
                             SpawnMegaShell();
                         else SpawnShell();
@@ -151,6 +154,25 @@ public class SpawnProjectile : MonoBehaviour
         GetPositions();
         //Recoil();
     }
+
+
+    void SpawnDimensionalShell()
+    {
+        GameObject objShell = Instantiate(dimensionalShell, startPos.position, Quaternion.identity) as GameObject;
+        
+
+        RotateTo(objShell, endPos.position);
+        FindObjectOfType<AudioManager>().Play("TankShoot");
+
+        // TODO SET HERE THE SHELL DAMAGE
+        objShell.GetComponent<DimensionalShell_movement>().SetDestination(endPos.position);
+        objShell.GetComponent<DimensionalShell_movement>().SetGameObjectAttached(endPos.GetComponent<Transform>().gameObject);
+
+        // objShell.GetComponent<DimensionalShell_movement>().SetTarget(endPos.gameObject);
+
+        GetPositions();
+    }
+
     //This Just recoils Back  ---> TODO -> need to recoil forth
     private void Recoil()
     {

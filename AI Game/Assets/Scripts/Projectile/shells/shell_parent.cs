@@ -54,7 +54,7 @@ public class shell_parent : MonoBehaviour
         destination = dest;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public virtual void OnCollisionEnter(Collision collision)
     {
         ContactPoint contact = collision.contacts[0];
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);

@@ -84,7 +84,7 @@ public class AgentPatrol : MonoBehaviour
 
                 if (freq >= 0.5)
                 {
-                    freq -= .5f;
+                    freq = 0f;
                     agent.CalculatePath(seekdest, agent.path);
                 }
 

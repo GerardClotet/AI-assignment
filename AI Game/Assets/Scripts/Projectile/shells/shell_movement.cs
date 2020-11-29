@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class shell_movement : shell_parent
 {
-public float speed = 20f;
+    public float speed = 20f;
 
     void Start()
     {
