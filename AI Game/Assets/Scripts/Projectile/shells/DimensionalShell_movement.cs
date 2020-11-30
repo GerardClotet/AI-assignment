@@ -10,9 +10,10 @@ public class DimensionalShell_movement : shell_parent
     private DimensionalShellsManager portal_manager;
 
     public float speed = 20f;
-
+    private Collider ignore_launchcoll;
     void Start()
     {
+
         audioName = "TankImpact";
         if (lifeTime == 0)
             lifeTime = 10;
@@ -23,6 +24,9 @@ public class DimensionalShell_movement : shell_parent
         height = Random.Range(minH, maxH);
         Launch();
         manager = Camera.main.gameObject.GetComponent<GameManager>();
+        if (Camera.main.gameObject.GetComponent<DimensionalShellsManager>() == null)
+            Debug.Log("portal manager null");
+
         portal_manager = Camera.main.gameObject.GetComponent<DimensionalShellsManager>();
         portal_manager.AddtoList(gameObject);
         portal_manager.CreateFirstPortal(gameObject);
@@ -49,7 +53,10 @@ public class DimensionalShell_movement : shell_parent
     {
         go_attached = go;
     }
-
+    public GameObject GetGameObjectAttached()
+    {
+        return go_attached;
+    }
     public override void OnCollisionEnter(Collision collision)
     {
         ContactPoint contact = collision.contacts[0];
@@ -61,8 +68,9 @@ public class DimensionalShell_movement : shell_parent
 
         if (collision.gameObject.tag == "Portal")
         {
-            Debug.Log("PORTAL");
+
             portal_manager.PortalCollider(gameObject);
+
         }
 
         //Only when not touching portals

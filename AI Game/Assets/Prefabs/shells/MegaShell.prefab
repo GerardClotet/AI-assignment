@@ -23678,7 +23678,7 @@ GameObject:
   - component: {fileID: 1721439930687787285}
   - component: {fileID: 8782050687113280153}
   - component: {fileID: 843346591998768520}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: MegaShell
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -23790,11 +23790,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd50178b4b6456b4cbc57995fa6f0224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
-  lifeTime: 15
-  ImpactPrefab: {fileID: 6228887330807169075, guid: 4bae421ff435e6f4c8189128c50fb2db,
-    type: 3}
+  gravity: -18
   shellDmg: 25
+  lifeTime: 15
   minH: 3
   maxH: 15
-  gravity: -18
+  destination: {x: 0, y: 0, z: 0}
+  ImpactPrefab: {fileID: 6228887330807169075, guid: 4bae421ff435e6f4c8189128c50fb2db,
+    type: 3}
+  speed: 50

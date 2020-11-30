@@ -18,9 +18,9 @@ TagManager:
   - PostProcessing
   - OBJECTS
   - Floor
-  - 
-  - 
-  - 
+  - red_spawn_area
+  - blue_spawn_area
+  - Projectile
   - 
   - 
   - 

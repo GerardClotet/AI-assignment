@@ -14221,10 +14221,10 @@ GameObject:
   - component: {fileID: 6660645265722905326}
   - component: {fileID: 6660645265725805262}
   - component: {fileID: 6660645265724674062}
-  - component: {fileID: 6660645265225644035}
   - component: {fileID: 1207012139217131188}
   - component: {fileID: 9134425704829697336}
-  m_Layer: 0
+  - component: {fileID: 4919207263869477749}
+  m_Layer: 13
   m_Name: DimensionalShell
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -14293,27 +14293,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &6660645265225644035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6660645265722740430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ab1f499b6a4ccc48848a27b1611bdf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravity: -18
-  shellDmg: 20
-  lifeTime: 10
-  minH: 5
-  maxH: 25
-  destination: {x: 0, y: 0, z: 0}
-  ImpactPrefab: {fileID: 6228887330807169075, guid: 4bae421ff435e6f4c8189128c50fb2db,
-    type: 3}
-  speed: 20
 --- !u!65 &1207012139217131188
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14343,3 +14322,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4919207263869477749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6660645265722740430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c7da70a1f48494babe9ee05ce01e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: -18
+  shellDmg: 10
+  lifeTime: 0
+  minH: 3
+  maxH: 15
+  destination: {x: 0, y: 0, z: 0}
+  ImpactPrefab: {fileID: 0}
+  speed: 20

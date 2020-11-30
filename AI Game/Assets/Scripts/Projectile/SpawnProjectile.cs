@@ -65,10 +65,10 @@ public class SpawnProjectile : MonoBehaviour
                     {
                         recol_turret = true;
 
-  //                      SpawnDimensionalShell(); //TODO REPLACE
+                        /*SpawnDimensionalShell();*/ //TODO REPLACE
                         if (Random.Range(1, 5) == 1)
                             SpawnMegaShell();
-                        else SpawnShell();
+                        else SpawnDimensionalShell();//SpawnShell();
 
                         bullets -= 1; //reduce ammo
                         reload_time = cadence;
@@ -162,9 +162,11 @@ public class SpawnProjectile : MonoBehaviour
         
 
         RotateTo(objShell, endPos.position);
-        FindObjectOfType<AudioManager>().Play("TankShoot");
+        // FindObjectOfType<AudioManager>().Play("TankShoot");
 
         // TODO SET HERE THE SHELL DAMAGE
+
+
         objShell.GetComponent<DimensionalShell_movement>().SetDestination(endPos.position);
         objShell.GetComponent<DimensionalShell_movement>().SetGameObjectAttached(endPos.GetComponent<Transform>().gameObject);
 
@@ -198,7 +200,7 @@ public class SpawnProjectile : MonoBehaviour
 
     public void SetBullets(int ammo)
     {
-        Debug.Log(bullets);
+
         bullets = ammo;
         noAmmo = false;
     }

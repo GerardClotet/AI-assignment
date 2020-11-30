@@ -13,7 +13,11 @@ public class GameManager : MonoBehaviour
     private float redTankLife = 100f;
     private float blueTankLife = 100f;
 
-    
+    private void Awake()
+    {
+        Physics.IgnoreLayerCollision(11, 13);
+        Physics.IgnoreLayerCollision(12, 13);
+    }
     void Start()
     {
     }

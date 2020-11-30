@@ -46,7 +46,7 @@ public class patrol : GOAction
     }
     public override void OnAbort()
     {
-        Debug.Log("Patroling Aborted");
+
         base.OnAbort();
     }
 

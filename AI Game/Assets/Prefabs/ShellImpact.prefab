@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6228887329019366360}
   - component: {fileID: 6228887329019366362}
   - component: {fileID: 6228887329019366363}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ignitedebris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3736,7 +3736,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 10039
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4767,7 +4767,7 @@ GameObject:
   - component: {fileID: 6228887330090615056}
   - component: {fileID: 6228887330090615058}
   - component: {fileID: 6228887330090615059}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: SmokeFloating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9523,7 +9523,7 @@ GameObject:
   - component: {fileID: 6228887330214780619}
   - component: {fileID: 6228887330214780613}
   - component: {fileID: 6228887330214780618}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Particles Floating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14279,7 +14279,7 @@ GameObject:
   - component: {fileID: 6228887330525793267}
   - component: {fileID: 6228887330525793229}
   - component: {fileID: 6228887330525793266}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ShockWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19035,7 +19035,7 @@ GameObject:
   - component: {fileID: 6228887330651294779}
   - component: {fileID: 6228887330651294773}
   - component: {fileID: 6228887330651294778}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22760,7 +22760,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 10039
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -23790,7 +23790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6228887330807169074}
   - component: {fileID: 114664223469382802}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ShellImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23824,6 +23824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2b27204ee6c754aad456360f2030df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeTime: 10
 --- !u!1 &6228887330872827957
 GameObject:
   m_ObjectHideFlags: 0
@@ -23835,7 +23836,7 @@ GameObject:
   - component: {fileID: 6228887330872827956}
   - component: {fileID: 6228887330872827958}
   - component: {fileID: 6228887330872827959}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Particles Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28591,7 +28592,7 @@ GameObject:
   - component: {fileID: 6228887330887462754}
   - component: {fileID: 6228887330887462780}
   - component: {fileID: 6228887330887462781}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}

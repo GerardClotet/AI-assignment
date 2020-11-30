@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2358857315477380841}
   - component: {fileID: 7787619351060426846}
   - component: {fileID: 148894108258606034}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Shell
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -95,13 +95,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1f499b6a4ccc48848a27b1611bdf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  gravity: -18
+  shellDmg: 10
   lifeTime: 10
-  ImpactPrefab: {fileID: 6228887330807169075, guid: 4bae421ff435e6f4c8189128c50fb2db,
-    type: 3}
   minH: 5
   maxH: 25
-  gravity: -18
+  destination: {x: 0, y: 0, z: 0}
+  ImpactPrefab: {fileID: 6228887330807169075, guid: 4bae421ff435e6f4c8189128c50fb2db,
+    type: 3}
+  speed: 20
 --- !u!65 &7787619351060426846
 BoxCollider:
   m_ObjectHideFlags: 0
