@@ -13,7 +13,7 @@ public class shell_parent : MonoBehaviour
     protected float height = 7f;
 
     [SerializeField]
-    private Vector3 destination = Vector3.zero;
+    protected Vector3 destination = Vector3.zero;
 
     [SerializeField]
     protected GameObject ImpactPrefab;

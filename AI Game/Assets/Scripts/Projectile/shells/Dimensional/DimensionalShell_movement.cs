@@ -6,6 +6,7 @@ public class DimensionalShell_movement : shell_parent
 {
     // Start is called before the first frame update
 
+    private GameObject enemy_go_attached;
     private GameObject go_attached;
     private DimensionalShellsManager portal_manager;
 
@@ -49,11 +50,20 @@ public class DimensionalShell_movement : shell_parent
     //{
         
     //}
-    public void SetGameObjectAttached(GameObject go)
+    public void SetEnemyGameObjectAttached(GameObject go)
+    {
+        enemy_go_attached = go;
+    }
+    public GameObject GetEnemyGameObjectAttached()
+    {
+        return enemy_go_attached;
+    }
+
+    public void SetFriendlyGameObjectAttached(GameObject go)
     {
         go_attached = go;
     }
-    public GameObject GetGameObjectAttached()
+    public GameObject GetFriendlyGameObjectAttached()
     {
         return go_attached;
     }
@@ -73,38 +83,39 @@ public class DimensionalShell_movement : shell_parent
 
         }
 
+        Destroy(gameObject);
         //Only when not touching portals
 
 
-        else
-        {
-            //if (ImpactPrefab != null)//Instantiate impact vfx
-            //{
-            //    GameObject impactVFX = Instantiate(ImpactPrefab, pos, rot) as GameObject;
+        //else
+        //{
+        //    //if (ImpactPrefab != null)//Instantiate impact vfx
+        //    //{
+        //    //    GameObject impactVFX = Instantiate(ImpactPrefab, pos, rot) as GameObject;
 
 
-            //}
-            for (int i = 0; i < names.Length; i++)
-            {
+        //    //}
+        //    for (int i = 0; i < names.Length; i++)
+        //    {
 
-                if (names[i] == collision.gameObject.name)
-                {
-                    if (manager != null)
-                    {
-                        if (i == 0)
-                            manager.DecreaseBlueTankLife(shellDmg);
-                        else
-                            manager.DecreaseRedTankLife(shellDmg);
+        //        if (names[i] == collision.gameObject.name)
+        //        {
+        //            if (manager != null)
+        //            {
+        //                if (i == 0)
+        //                    manager.DecreaseBlueTankLife(shellDmg);
+        //                else
+        //                    manager.DecreaseRedTankLife(shellDmg);
 
-                    }
+        //            }
 
 
-                }
-            }
+        //        }
+        //    }
 
-            if (collision.gameObject.tag != "Projectile")
-                Destroy(gameObject);
-        }
+        //    if (collision.gameObject.tag != "Projectile")
+        //        Destroy(gameObject);
+        //}
        
     }
 }

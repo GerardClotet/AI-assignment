@@ -15,11 +15,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Physics.IgnoreLayerCollision(11, 13);
-        Physics.IgnoreLayerCollision(12, 13);
-    }
-    void Start()
-    {
+        Physics.IgnoreLayerCollision(11, 13,true);
     }
 
     // Update is called once per frame

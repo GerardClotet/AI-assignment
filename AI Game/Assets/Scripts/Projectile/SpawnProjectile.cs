@@ -34,6 +34,19 @@ public class SpawnProjectile : MonoBehaviour
 
     //Raycasting
     public LayerMask layer;
+
+    //PortalAffairs
+    private bool portal_execution = false;
+
+
+    public void ResetPortalExecution()
+    {
+        portal_execution = false;
+    }
+    public bool GetPortalExtecution()
+    {
+        return portal_execution;
+    }
     void Start()
     {
         reload_time = cadence;
@@ -65,11 +78,23 @@ public class SpawnProjectile : MonoBehaviour
                     {
                         recol_turret = true;
 
-                        /*SpawnDimensionalShell();*/ //TODO REPLACE
-                        if (Random.Range(1, 5) == 1)
-                            SpawnMegaShell();
-                        else SpawnDimensionalShell();//SpawnShell();
+                        //REWORK THIS, NOS THE RANDOM METHOD IS PROVISIONAL 
+                        //int i = Random.Range(1, 5);
+                        //if (i == 1)
+                        //    SpawnMegaShell();
+                        //else if ((i == 2 || i == 3) && !portal_execution)
+                        //{
+                        //    portal_execution = true;
+                        //    SpawnDimensionalShell();
+                        //}
+                        //else SpawnShell();
 
+                
+                        if(!portal_execution)
+                        {
+                            portal_execution = true;
+                            SpawnDimensionalShell();
+                        }
                         bullets -= 1; //reduce ammo
                         reload_time = cadence;
 
@@ -166,10 +191,9 @@ public class SpawnProjectile : MonoBehaviour
 
         // TODO SET HERE THE SHELL DAMAGE
 
-
         objShell.GetComponent<DimensionalShell_movement>().SetDestination(endPos.position);
-        objShell.GetComponent<DimensionalShell_movement>().SetGameObjectAttached(endPos.GetComponent<Transform>().gameObject);
-
+        objShell.GetComponent<DimensionalShell_movement>().SetEnemyGameObjectAttached(endPos.GetComponent<Transform>().gameObject);
+        objShell.GetComponent<DimensionalShell_movement>().SetFriendlyGameObjectAttached(gameObject.GetComponentInParent<Transform>().gameObject);
         // objShell.GetComponent<DimensionalShell_movement>().SetTarget(endPos.gameObject);
 
         GetPositions();

@@ -12,7 +12,7 @@ public class shell_portal : MonoBehaviour
     private float timer = 3f;
     private float secondtimer = 3f;
     public bool collided { get; private set; }
-
+    private GameObject go_attached;
     void Start()
     {
         collided = false;
@@ -21,8 +21,9 @@ public class shell_portal : MonoBehaviour
        
     }
 
-     void Update()
+    void Update()
     {
+
         timer -= Time.deltaTime;
         secondtimer -= Time.deltaTime;
         if (secondtimer <= 0.4 && secondtimer > -1)
@@ -33,12 +34,21 @@ public class shell_portal : MonoBehaviour
             decrease.Play();
 
             secondtimer = -1f;
-         }
+        }
             
         if (timer <= 0f)
+        {
+            if (!collided)
+                go_attached.GetComponent<SpawnProjectile>().ResetPortalExecution();
             Destroy(gameObject);
 
+        }
 
+
+    }
+    public void GameObjectAttached(GameObject go)
+    {
+        go_attached = go;
     }
     public void Init()
     {
@@ -47,7 +57,7 @@ public class shell_portal : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Projectile")
+        if (collision.gameObject.tag == "Projectile" && collision.gameObject.GetComponent<DimensionalShell_movement>().GetFriendlyGameObjectAttached() == go_attached)
         {
             //mantain.Stop();
             //decrease.Play();

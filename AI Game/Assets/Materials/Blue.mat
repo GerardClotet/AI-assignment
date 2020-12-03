@@ -8,13 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Blue
-  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
+  m_Shader: {fileID: 4800000, guid: 83679e1119c52124fa005595eebb9ffd, type: 3}
   m_ShaderKeywords: _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
   disabledShaderPasses:
   - DistortionVectors
   - TransparentDepthPrepass
@@ -141,6 +142,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_2C02A5FB: 5
+    - Vector1_5D7E80AB: 0.1
+    - Vector1_76B21613: 5
+    - Vector1_875276E7: 0.5
+    - Vector1_9E7450EF: 0.5
+    - Vector1_A6CB10B5: 0.5
+    - Vector1_BDCC555F: 0
+    - Vector1_CF57E3BE: 0.75
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -265,6 +274,10 @@ Material:
     - _ZTestModeDistortion: 4
     - _ZWrite: 1
     m_Colors:
+    - Color_3CBFD7E5: {r: 0.003921568, g: 0.1921739, b: 1, a: 0}
+    - Color_58071C51: {r: 0, g: 1.498039, b: 1.380392, a: 0}
+    - Color_BF2E8925: {r: 1, g: 1, b: 1, a: 0}
+    - Vector2_C13997B9: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _BaseColor: {r: 0.078503475, g: 0.4907082, b: 0.9705882, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.078503475, g: 0.4907082, b: 0.9705882, a: 1}

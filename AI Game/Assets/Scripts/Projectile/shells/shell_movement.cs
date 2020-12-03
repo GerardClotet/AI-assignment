@@ -34,13 +34,4 @@ public class shell_movement : shell_parent
             Destroy(gameObject);
     }
 
-  
-
-    public void SetShellDamage(float dmg)
-    {
-        shellDmg = dmg;
-    }
-
-
-
 }

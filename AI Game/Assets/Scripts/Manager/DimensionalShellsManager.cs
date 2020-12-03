@@ -6,7 +6,7 @@ public class DimensionalShellsManager : MonoBehaviour
 {
 
     public GameObject portalVFX;
-
+    public GameObject attackPortal;
     [HideInInspector]
     public List<GameObject> DimensionalShells;
 
@@ -14,14 +14,8 @@ public class DimensionalShellsManager : MonoBehaviour
     private GameObject redTank;
 
     private int portals_per_attack = 5;
-    private int red_portals=0;
+    private int red_portals=0; //Todo create a single variable per object list, maybe with a map/Dictionary
     private int blue_portals=0;
-
-    //testing
-    bool drawing = false;
-    GameObject tanktype;
-    Vector3 direccio;
-    //-----------
 
     void Start()
     {
@@ -36,17 +30,16 @@ public class DimensionalShellsManager : MonoBehaviour
         {
             if (DimensionalShells[i] == original_shell)
             {
-                GameObject[] tmp_tank = CheckTank(original_shell.GetComponent<DimensionalShell_movement>().GetGameObjectAttached());
+                GameObject[] tmp_tank = CheckTank(original_shell.GetComponent<DimensionalShell_movement>().GetEnemyGameObjectAttached());
                 if (tmp_tank == null)
                     Debug.Log("no tank attached to DimensionalShell");
                 else
                 {
                     if (tmp_tank[1].name == redTank.name)
-                        StartCoroutine(CreateAttackPortalsCorroutine(tmp_tank, red_portals));
+                        StartCoroutine(CreateAttackPortalsCorroutine(tmp_tank, red_portals)); //It's called too many time check it out;
 
                     else StartCoroutine(CreateAttackPortalsCorroutine(tmp_tank,blue_portals));//Also destroy gameobject
                 }
-                //CreateAttackPortals(tmp_tank[1]);
                 DimensionalShells.RemoveAt(i);
                 Destroy(original_shell);
                 break;
@@ -70,6 +63,7 @@ public class DimensionalShellsManager : MonoBehaviour
         objShell.transform.localRotation = Quaternion.Lerp(objShell.transform.rotation, rotation, 1);
 
         objShell.GetComponent<shell_portal>().Init();
+        objShell.GetComponent<shell_portal>().GameObjectAttached(shell_attached.GetComponent<DimensionalShell_movement>().GetFriendlyGameObjectAttached());
     }
 
     public Vector3 CreateAttackPortals(GameObject enemytank)
@@ -94,9 +88,11 @@ public class DimensionalShellsManager : MonoBehaviour
 
         while( portal_counter <portals_per_attack)
         {
-            GameObject portal = Instantiate(portalVFX, CreateAttackPortals(tank[1]), Quaternion.identity) as GameObject;
+            GameObject portal = Instantiate(attackPortal, CreateAttackPortals(tank[1]), Quaternion.identity) as GameObject;
 
             RotateTo(portal, tank[1].transform.position);
+
+            portal.GetComponent<portal_attack>().SetDestination(tank[1].transform.position);
             //Instantiate(portalVFX)
             portal_counter++;
 
@@ -104,27 +100,37 @@ public class DimensionalShellsManager : MonoBehaviour
 
         }
 
+        tank[0].GetComponentInChildren<SpawnProjectile>().ResetPortalExecution();
+
         Debug.Log("end coroutine");
-        portal_counter = 0;
+        if (tank[1].name == redTank.name) //update! now may be correct bc tank only launched dimensional bullet when the proces has finished//Not correct, maybe the same tank launches a dimensional bullet before the previous one created the 5 portals --> see correction on the variables 
+            red_portals = 0; 
+        else blue_portals = 0;
+
 
   
     }
 
     public void AddtoList(GameObject shell)
     {
+        if (shell.GetComponent<DimensionalShell_movement>().GetEnemyGameObjectAttached() == null)
+            Destroy(shell);
+        else
         DimensionalShells.Add(shell);
     }
 
     GameObject[] CheckTank(GameObject tank)
     {
-        if (tank.name == "RedTank")
+        if (tank.name == redTank.name)
         {
-           
-            return new GameObject[] { redTank, blueTank};
+            GameObject[] tst = { redTank, blueTank };
+            return  tst;
         }
-        else if (tank.name =="BlueTank")
+        else if (tank.name ==blueTank.name)
         {
-            return new GameObject[] { blueTank, redTank };
+            GameObject[] tst = { blueTank, redTank };
+
+            return tst;
         }
          else   return null;
     }
