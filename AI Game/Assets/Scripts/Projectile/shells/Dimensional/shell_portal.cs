@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class shell_portal : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public Material red_mat;
+    public Material blue_mat;
+    private ParticleSystemRenderer psr;
 
     public ParticleSystem mantain;
     public ParticleSystem decrease;
@@ -52,8 +55,15 @@ public class shell_portal : MonoBehaviour
     }
     public void Init()
     {
+        if (go_attached.name == "RedTank")
+            ChangeMaterial(blue_mat);
+        else
+            ChangeMaterial(red_mat);
+
         gameObject.GetComponent<ParticleSystem>().Play();
         mantain.Play();
+        
+
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -68,5 +78,24 @@ public class shell_portal : MonoBehaviour
             collided = true;
         }
     }
+
+
+
+    void ChangeMaterial(Material mat)
+    {
+        psr = gameObject.GetComponent<ParticleSystemRenderer>();
+        psr.material = mat;
+
+
+        //sons
+
+        ParticleSystemRenderer[] sons_psr = GetComponentsInChildren<ParticleSystemRenderer>();
+        foreach (ParticleSystemRenderer it in sons_psr)
+        {
+            it.material = mat;
+        }
+       
+    }
+
 
 }

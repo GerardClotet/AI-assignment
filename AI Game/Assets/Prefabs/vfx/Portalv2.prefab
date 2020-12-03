@@ -4795,6 +4795,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610a1f988fe705047bea3058b03c96af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  red_mat: {fileID: 2100000, guid: 1e7f14d7012bd0a4b9681a3b7aae63e8, type: 2}
+  blue_mat: {fileID: 2100000, guid: 36a342386c3956c4aa81e7fd186e7845, type: 2}
   mantain: {fileID: 5841621051357625124}
   decrease: {fileID: 6352156907457560884}
 --- !u!1 &6143997660395391110

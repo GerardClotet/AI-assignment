@@ -14325,6 +14325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b066001c051327a4bb5fea019ff99d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  red_mat: {fileID: 2100000, guid: 1e7f14d7012bd0a4b9681a3b7aae63e8, type: 2}
+  blue_mat: {fileID: 2100000, guid: 36a342386c3956c4aa81e7fd186e7845, type: 2}
   mantain: {fileID: 871345603617957335}
   decrease: {fileID: 369676002989645767}
   dimensionalShell: {fileID: 7383638614816097346, guid: 3dcc342366687604297a2d8395c6162a,

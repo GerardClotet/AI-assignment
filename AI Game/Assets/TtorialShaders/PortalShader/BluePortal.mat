@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PortalShaderMat
+  m_Name: BluePortal
   m_Shader: {fileID: 4800000, guid: 75abe41c6c9ab0441923902f034760c8, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -25,19 +25,10 @@ Material:
         m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - Texture2D_4B1872:
-        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_10BE8FB0: 3.5
-    - Vector1_14CDB467: 0.5
-    - Vector1_5274BF44: 30
     - Vector1_618D129: -1.56
     - Vector1_85540F41: 0.3
     - Vector1_964DAAF6: 22.59
     - Vector1_AB064746: 3.4
-    - Vector1_B4D4DBE5: 2
     m_Colors:
-    - Color_944D4EAF: {r: 0.55498034, g: 3.1798873, b: 1.0484685, a: 0}
-    - Color_F1EA93B3: {r: 11.795299, g: 25.416586, b: 0, a: 0}
+    - Color_944D4EAF: {r: 0.5660532, g: 1.1065288, b: 3.1798875, a: 0}

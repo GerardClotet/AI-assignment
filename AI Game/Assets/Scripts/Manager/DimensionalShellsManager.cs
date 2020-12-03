@@ -13,7 +13,7 @@ public class DimensionalShellsManager : MonoBehaviour
     private GameObject blueTank;
     private GameObject redTank;
 
-    private int portals_per_attack = 5;
+    private readonly int portals_per_attack = 5;
     private int red_portals=0; //Todo create a single variable per object list, maybe with a map/Dictionary
     private int blue_portals=0;
 
@@ -62,8 +62,9 @@ public class DimensionalShellsManager : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(direction);
         objShell.transform.localRotation = Quaternion.Lerp(objShell.transform.rotation, rotation, 1);
 
-        objShell.GetComponent<shell_portal>().Init();
+
         objShell.GetComponent<shell_portal>().GameObjectAttached(shell_attached.GetComponent<DimensionalShell_movement>().GetFriendlyGameObjectAttached());
+        objShell.GetComponent<shell_portal>().Init();
     }
 
     public Vector3 CreateAttackPortals(GameObject enemytank)
@@ -83,7 +84,6 @@ public class DimensionalShellsManager : MonoBehaviour
 
     IEnumerator CreateAttackPortalsCorroutine(GameObject[] tank, int portal_counter ) //need to pass enemy tank;
     {
-        CreateAttackPortals(tank[1]);//enemytank
 
 
         while( portal_counter <portals_per_attack)
@@ -93,6 +93,7 @@ public class DimensionalShellsManager : MonoBehaviour
             RotateTo(portal, tank[1].transform.position);
 
             portal.GetComponent<portal_attack>().SetDestination(tank[1].transform.position);
+            portal.GetComponent<portal_attack>().SetProperMaterial(tank[0]);
             //Instantiate(portalVFX)
             portal_counter++;
 

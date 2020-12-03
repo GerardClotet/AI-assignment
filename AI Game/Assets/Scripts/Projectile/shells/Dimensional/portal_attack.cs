@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class portal_attack : MonoBehaviour
 {
+    public Material red_mat;
+    public Material blue_mat;
+    private ParticleSystemRenderer psr;
     public ParticleSystem mantain;
     public ParticleSystem decrease;
 
@@ -12,12 +15,12 @@ public class portal_attack : MonoBehaviour
     private Vector3 destination;
     // Start is called before the first frame update
     private bool launched = false;
+
+ 
+
     void Start()
     {
-        //StartCoroutine(SpawnShell());
-       // SpawnShell();
         Invoke("SpawnShell", 0.3f); //Invokes function when portal has completed open action (visual)
-    //decrease.Pause();
         gameObject.GetComponent<ParticleSystem>().Play();
         StartCoroutine(ClosePortal());
     }
@@ -83,5 +86,27 @@ public class portal_attack : MonoBehaviour
     public void SetDestination(Vector3 transf)
     {
         destination = transf;
+    }
+
+    public void SetProperMaterial(GameObject tank)
+    {
+        if (tank.name == "RedTank")
+            ChangeMaterial(red_mat);
+        else ChangeMaterial(blue_mat);
+    }
+    private void ChangeMaterial(Material mat)
+    {
+        psr = gameObject.GetComponent<ParticleSystemRenderer>();
+        psr.material = mat;
+
+
+        //sons
+
+        ParticleSystemRenderer[] sons_psr = GetComponentsInChildren<ParticleSystemRenderer>();
+        foreach (ParticleSystemRenderer it in sons_psr)
+        {
+            it.material = mat;
+        }
+
     }
 }
