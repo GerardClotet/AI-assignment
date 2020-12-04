@@ -89,11 +89,11 @@ public class DimensionalShellsManager : MonoBehaviour
         while( portal_counter <portals_per_attack)
         {
             GameObject portal = Instantiate(attackPortal, CreateAttackPortals(tank[1]), Quaternion.identity) as GameObject;
+            portal.GetComponent<portal_attack>().SetProperMaterial(tank[0]);
 
             RotateTo(portal, tank[1].transform.position);
 
             portal.GetComponent<portal_attack>().SetDestination(tank[1].transform.position);
-            portal.GetComponent<portal_attack>().SetProperMaterial(tank[0]);
             //Instantiate(portalVFX)
             portal_counter++;
 
@@ -103,7 +103,6 @@ public class DimensionalShellsManager : MonoBehaviour
 
         tank[0].GetComponentInChildren<SpawnProjectile>().ResetPortalExecution();
 
-        Debug.Log("end coroutine");
         if (tank[1].name == redTank.name) //update! now may be correct bc tank only launched dimensional bullet when the proces has finished//Not correct, maybe the same tank launches a dimensional bullet before the previous one created the 5 portals --> see correction on the variables 
             red_portals = 0; 
         else blue_portals = 0;

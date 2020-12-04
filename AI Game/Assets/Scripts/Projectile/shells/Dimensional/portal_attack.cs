@@ -21,8 +21,10 @@ public class portal_attack : MonoBehaviour
     void Start()
     {
         Invoke("SpawnShell", 0.3f); //Invokes function when portal has completed open action (visual)
-        gameObject.GetComponent<ParticleSystem>().Play();
-        StartCoroutine(ClosePortal());
+        gameObject.GetComponent<ParticleSystem>().Play(false);
+        mantain.Play();
+
+       // StartCoroutine(ClosePortal());
     }
     //IEnumerator SpawnShell()
     //{
@@ -41,23 +43,28 @@ public class portal_attack : MonoBehaviour
     IEnumerator ClosePortal()
     {
 
-        yield return new WaitForSeconds(1.5f);
-
+        yield return new WaitForSeconds(0.3f);
+        mantain.Stop();
+        mantain.Clear();
+        yield return null;
         //while (launched)
         //    yield return null;
         if (launched)
         {
-            decrease.Clear();
+            //decrease.gameObject.SetActive(true);
+            //Debug.Log("Decreased Played");
+            //decrease.Clear();
             decrease.Play();
         }
-        yield return null;
+        // yield return null;
+        yield return new WaitForSeconds(decrease.main.startLifetime.constant +0.01f);
+        //while (decrease.isPlaying)
+        //{
+        //    yield return null;
+        //}
 
-        while(decrease.isPlaying)
-            yield return null;
 
-
-        Destroy(gameObject);
-        Debug.Log("End attack portal coroutine");
+       Destroy(gameObject);
         //end corroutine
     }
     // Update is called once per frame
@@ -81,6 +88,8 @@ public class portal_attack : MonoBehaviour
         DimensionalShell_attack_movement attck_shell = objshell.GetComponent<DimensionalShell_attack_movement>();
         if (attck_shell != null) //maybe null
             attck_shell.SetDestination(destination);
+
+        StartCoroutine(ClosePortal());
     }
 
     public void SetDestination(Vector3 transf)
