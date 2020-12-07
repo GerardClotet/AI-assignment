@@ -70,7 +70,11 @@ MonoBehaviour:
     name=\"Tank/Patrol\" description=\"Tanks Patrol throuhg control points\" cardinality=\"0\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode
     id=\"6\" />\r\n          <RandomSelectorNode id=\"5\" />\r\n        </data>\r\n
-    \     </_data>\r\n    </ActionNode>\r\n  </editorInfo>\r\n</BehaviorBricks>"
+    \     </_data>\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"0\">\r\n      <_data>\r\n
+    \       <data breakpoint=\"0\" selected=\"False\" position=\"0 0\" name=\"AlwaysTrue\"
+    description=\"Eval\" cardinality=\"1\" hasParent=\"False\">\r\n          <ConditionEvalNode
+    id=\"0\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n
+    \ </editorInfo>\r\n</BehaviorBricks>"
   zoom: 0.8
   subslist: []
   _guid: d3f2dfb0ed315764c89d75e2ca912067
