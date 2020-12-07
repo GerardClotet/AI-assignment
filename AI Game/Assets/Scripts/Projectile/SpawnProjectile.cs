@@ -78,23 +78,20 @@ public class SpawnProjectile : MonoBehaviour
                     {
                         recol_turret = true;
 
-                        //REWORK THIS, NOS THE RANDOM METHOD IS PROVISIONAL 
-                        //int i = Random.Range(1, 5);
-                        //if (i == 1)
-                        //    SpawnMegaShell();
-                        //else if ((i == 2 || i == 3) && !portal_execution)
-                        //{
-                        //    portal_execution = true;
-                        //    SpawnDimensionalShell();
-                        //}
-                        //else SpawnShell();
 
-                
-                        if(!portal_execution)
+                        int i = Random.Range(1, 5);
+                        if (i == 1)
+                            SpawnMegaShell();
+
+                        else if (i == 2 && !portal_execution)
                         {
                             portal_execution = true;
                             SpawnDimensionalShell();
                         }
+                        else SpawnShell();
+
+                
+
                         bullets -= 1; //reduce ammo
                         reload_time = cadence;
 
@@ -210,10 +207,6 @@ public class SpawnProjectile : MonoBehaviour
         //TODO CHECK A LOOK TO PROPER RECOIL 
 
 
-        //originRecoilPos = turret.transform.localPosition;
-        //endRecoilPos = originRecoilPos;
-        //endRecoilPos.z *= 10;
-
         Vector3 dir = startPos.position - endPos.position;
         originRecoilPos = turret.transform.localPosition;
         endRecoilPos = originRecoilPos;
@@ -229,25 +222,4 @@ public class SpawnProjectile : MonoBehaviour
         noAmmo = false;
     }
 
-
-    public GameObject FindChildByName(string name)
-    {
-        Transform[] iter = gameObject.GetComponentsInChildren<Transform>();
-        if (iter != null)
-        {
-            for (int i = 0; i < iter.Length; i++)
-            {
-                if (name == iter[i].gameObject.name)
-                    return iter[i].gameObject;
-
-                else if (iter[i].gameObject.GetComponentsInChildren<Transform>() != null)
-                    FindChildByName(name);
-
-            }
-        }
-
-
-        return null;
-
-    }
 }

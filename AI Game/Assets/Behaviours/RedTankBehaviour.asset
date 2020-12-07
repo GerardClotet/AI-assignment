@@ -74,7 +74,7 @@ MonoBehaviour:
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode
     id=\"10\" />\r\n          <PrioritySelectorNode id=\"2\" />\r\n        </data>\r\n
     \     </_data>\r\n    </ConditionEvalNode>\r\n    <ActionNode id=\"9\">\r\n      <_data>\r\n
-    \       <data breakpoint=\"0\" selected=\"True\" position=\"243.3331 388.8888\"
+    \       <data breakpoint=\"0\" selected=\"False\" position=\"243.3331 388.8888\"
     name=\"Tank/GoForAmmo\" description=\"Goes for the selected place to get ammo\"
     cardinality=\"0\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n
     \         <ActionNode id=\"9\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n
