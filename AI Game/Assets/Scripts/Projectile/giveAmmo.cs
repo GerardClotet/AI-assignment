@@ -9,7 +9,7 @@ public class giveAmmo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        FindObjectOfType<AudioManager>().Play("Recharge");
+        //FindObjectOfType<AudioManager>().Play("Recharge");
         spawnProjectile = other.gameObject.GetComponentInChildren<SpawnProjectile>();
         
         if (spawnProjectile != null)

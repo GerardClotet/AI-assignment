@@ -19,7 +19,10 @@ public class SteeringWander : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
 		//ChangeTarget();
 	}
-
+    public void DeleteAgenPath()
+    {
+        agent.ResetPath();
+    }
 
     // Update is called once per frame
     public void ChangeTarget () 

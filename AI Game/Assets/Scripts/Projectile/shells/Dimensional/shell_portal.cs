@@ -18,7 +18,7 @@ public class shell_portal : MonoBehaviour
     private GameObject go_attached;
     void Start()
     {
-        FindObjectOfType<AudioManager>().Play("portal");
+        //FindObjectOfType<AudioManager>().Play("portal");
         collided = false;
         //decrease.Pause();
         gameObject.GetComponent<ParticleSystem>().Play(false);

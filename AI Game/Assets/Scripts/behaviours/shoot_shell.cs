@@ -28,6 +28,8 @@ public class shoot_shell : GOAction
             spawner = tank.GetComponentInChildren<SpawnProjectile>();
             wander = tank.GetComponent<SteeringWander>();
             wander.enabled = true;
+            if(spawner.isInSight)
+                wander.DeleteAgenPath();
             wander.ChangeTarget();
         }
 

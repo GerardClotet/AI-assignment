@@ -41,11 +41,11 @@ public class SpawnProjectile : MonoBehaviour
 
     //Raycasting
     public LayerMask layer;
-
+    public bool isInSight = false;
     //PortalAffairs
     private bool portal_execution = false;
 
-
+    
     public void SetAmmoIconFalse()
     {
         if (ammo_ui != null) //Change to Ammo Icon
@@ -104,6 +104,7 @@ public class SpawnProjectile : MonoBehaviour
                     Vector3 dir = endPos.position - startPos.position;
                     if (!Physics.Raycast(startPos.position, dir.normalized, dir.magnitude, layer))
                     {
+                        isInSight = true;
                         recol_turret = true;
 
 
@@ -126,6 +127,7 @@ public class SpawnProjectile : MonoBehaviour
 
 
                     }
+                    else isInSight = false;
 
                 }
             }
