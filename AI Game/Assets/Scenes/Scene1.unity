@@ -13209,6 +13209,16 @@ MonoBehaviour:
     volume: 0.354
     pitch: 1
     source: {fileID: 0}
+  - name: Recharge
+    clip: {fileID: 8300000, guid: d575f2ed3faa9cf41b376e832496bc29, type: 3}
+    volume: 0.693
+    pitch: 1
+    source: {fileID: 0}
+  - name: portal
+    clip: {fileID: 8300000, guid: 4e6ac7750d3a6ef4fb648d64c96fd429, type: 3}
+    volume: 0.791
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &1536391543
 Transform:
   m_ObjectHideFlags: 0
