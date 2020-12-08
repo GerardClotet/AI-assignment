@@ -15,7 +15,7 @@ public class shoot_shell : GOAction
  
     private SpawnProjectile spawner;
     // Start is called before the first frame update
-    private SteeringWander wander;
+    private AgentPatrol seek;
 
    // private GameObject exclamation_UI;
     public override void OnStart()
@@ -26,11 +26,11 @@ public class shoot_shell : GOAction
         if (tank != null)
         {
             spawner = tank.GetComponentInChildren<SpawnProjectile>();
-            wander = tank.GetComponent<SteeringWander>();
-            wander.enabled = true;
-            if(spawner.isInSight)
-                wander.DeleteAgenPath();
-            wander.ChangeTarget();
+            seek = tank.GetComponent<AgentPatrol>();
+           // seek.enabled = true;
+            //if(spawner.isInSight)
+            //    wander.DeleteAgenPath();
+            //wander.ChangeTarget();
         }
 
         base.OnStart();
@@ -42,7 +42,7 @@ public class shoot_shell : GOAction
         if (spawner == null)
             return TaskStatus.FAILED;
 
-        wander.DoAction();
+        seek.DoAction();
 
         if(spawner.GetState()==0)
         {
