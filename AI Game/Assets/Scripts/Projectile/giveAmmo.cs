@@ -17,6 +17,7 @@ public class giveAmmo : MonoBehaviour
     //}
     private void OnTriggerEnter(Collider other)
     {
+        FindObjectOfType<AudioManager>().Play("Recharge");
         spawnProjectile = other.gameObject.GetComponentInChildren<SpawnProjectile>();
         if (spawnProjectile != null)
             spawnProjectile.SetBullets(5);

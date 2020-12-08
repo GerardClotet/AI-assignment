@@ -20,6 +20,7 @@ public class portal_attack : MonoBehaviour
 
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("portal");
         Invoke("SpawnShell", 0.3f); //Invokes function when portal has completed open action (visual)
         gameObject.GetComponent<ParticleSystem>().Play(false);
         mantain.Play();
