@@ -63,7 +63,7 @@ public class shoot_shell : GOAction
     public override void OnAbort()
     {
         spawner.SwitchState(0);
-        Debug.Log("Aborted");
+        //Debug.Log("Aborted");
         if(exclamation_UI != null)
             exclamation_UI.SetActive(false);
 

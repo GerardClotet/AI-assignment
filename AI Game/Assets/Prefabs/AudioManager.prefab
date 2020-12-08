@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1153705230762664040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1153705230762664042}
+  - component: {fileID: 1153705230762664043}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1153705230762664042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153705230762664040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1153705230762664043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153705230762664040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663fca998daef3647a650a6e5062ff1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: TankShoot
+    clip: {fileID: 8300000, guid: 727fb8de85de3e94db65024fc711a754, type: 3}
+    volume: 0.326
+    pitch: 1
+    source: {fileID: 0}
+  - name: TankImpact
+    clip: {fileID: 8300000, guid: 1ae9c3ef31cb7bf4ca98ba2ad2959fb4, type: 3}
+    volume: 0.395
+    pitch: 1
+    source: {fileID: 0}
+  - name: ChargingShell
+    clip: {fileID: 8300000, guid: b4eeae382bdfc5b46bf88813fedf703d, type: 3}
+    volume: 0.411
+    pitch: 1
+    source: {fileID: 0}
+  - name: MegaShellShoot
+    clip: {fileID: 8300000, guid: 468ea8f7a2a3b024889ac63824d893bf, type: 3}
+    volume: 0.535
+    pitch: 1
+    source: {fileID: 0}
+  - name: MegaShellStart
+    clip: {fileID: 8300000, guid: 48071db141de4d845824693b0a64c11a, type: 3}
+    volume: 0.354
+    pitch: 1
+    source: {fileID: 0}
+  - name: portal
+    clip: {fileID: 8300000, guid: 4e6ac7750d3a6ef4fb648d64c96fd429, type: 3}
+    volume: 0.884
+    pitch: 1
+    source: {fileID: 0}
+  - name: Recharge
+    clip: {fileID: 8300000, guid: d575f2ed3faa9cf41b376e832496bc29, type: 3}
+    volume: 0.86
+    pitch: 1
+    source: {fileID: 0}
