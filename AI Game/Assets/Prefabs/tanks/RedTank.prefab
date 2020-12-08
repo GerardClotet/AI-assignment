@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTasksPerTick: 1
-  behavior: {fileID: 11400000, guid: 7fe948fbf891d034f85078dbd3808465, type: 2}
+  behavior: {fileID: 11400000, guid: 02b68afd49842674a9fd43bba63a79e1, type: 2}
   paused: 0
   restartWhenFinished: 0
   blackboard:
@@ -374,13 +374,15 @@ MonoBehaviour:
     colorParamsNames: []
     colorParamsLostDefaultValue: 
     objectParams:
-    - {fileID: 1002238158535223456}
     - {fileID: 0}
-    - {fileID: 1002238159171116498}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     objectParamsNames:
     - Tank
     - Reload Place
     - TANK_turret
+    - Enemy
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []

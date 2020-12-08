@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 public class SpawnProjectile : MonoBehaviour
 {
+    enum States
+    {
+        PATROLLING,
+        ENEMY,
+    }
+    States tank_states;
+
     // Start is called before the first frame update
     public GameObject shell;
     public GameObject megaShell;
@@ -51,21 +58,35 @@ public class SpawnProjectile : MonoBehaviour
     {
         reload_time = cadence;
         noAmmo = false;
+        tank_states = States.PATROLLING;
         //GameObject objShell = Instantiate(shell, startPos.position, Quaternion.identity) as GameObject;
         //RotateTo(objShell, endPos.position);
     }
-
     // Update is called once per frame
+    
     private void Update()
     {
-        //tank_bullets >
         reload_time -= Time.deltaTime;
+        switch (tank_states)
+        {
+            case States.ENEMY:
+                ShootUpdate();
+                break;
+            case States.PATROLLING:
+
+                break;
+        }
+        //tank_bullets >
+       
+    }
+    void ShootUpdate()
+    {
         if (!recol_turret)
         {
             if (bullets != 0)
             {
 
-                if(exclamation != null)
+                if (exclamation != null)
                     if (exclamation.activeSelf)
                         exclamation.SetActive(false);
 
@@ -90,7 +111,7 @@ public class SpawnProjectile : MonoBehaviour
                         }
                         else SpawnShell();
 
-                
+
 
                         bullets -= 1; //reduce ammo
                         reload_time = cadence;
@@ -100,7 +121,8 @@ public class SpawnProjectile : MonoBehaviour
 
                 }
             }
-            else if(bullets ==0) {
+            else if (bullets == 0)
+            {
 
                 noAmmo = true;
 
@@ -118,19 +140,19 @@ public class SpawnProjectile : MonoBehaviour
                 }
 
             }
-           
+
         }
         else
         {
             if (recolback)
             {
-                recoilingAmount += Time.deltaTime*recoilSpeed;
+                recoilingAmount += Time.deltaTime * recoilSpeed;
                 if (recoilingAmount >= recoilTime)
                     recolback = false;
             }
             else if (!recolback)
             {
-                recoilingAmount -= Time.deltaTime*recoilSpeed;
+                recoilingAmount -= Time.deltaTime * recoilSpeed;
 
                 if (recoilingAmount <= 0)
                 {
@@ -140,9 +162,10 @@ public class SpawnProjectile : MonoBehaviour
                 }
             }
 
-                Recoil();
+            Recoil();
         }
     }
+
     void RotateTo(GameObject obj, Vector3 destination)
     {
         Vector3 direction = destination - obj.transform.position;
@@ -221,5 +244,13 @@ public class SpawnProjectile : MonoBehaviour
         bullets = ammo;
         noAmmo = false;
     }
+    public void SwitchState(int i)
+    {
+        tank_states = (States)i;
+    }
 
+    public int GetState()
+    {
+        return (int)tank_states;
+    }
 }
