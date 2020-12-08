@@ -35,7 +35,7 @@ public class SpawnProjectile : MonoBehaviour
     public delegate void RechargeAction();
     public event RechargeAction NoBullets;
 
-    public GameObject exclamation;
+    public GameObject ammo_ui; //previous Ammo
 
     public bool noAmmo { get; private set; }
 
@@ -46,6 +46,12 @@ public class SpawnProjectile : MonoBehaviour
     private bool portal_execution = false;
 
 
+    public void SetAmmoIconFalse()
+    {
+        if (ammo_ui != null) //Change to Ammo Icon
+            if (ammo_ui.activeSelf)
+                ammo_ui.SetActive(false);
+    }
     public void ResetPortalExecution()
     {
         portal_execution = false;
@@ -59,6 +65,7 @@ public class SpawnProjectile : MonoBehaviour
         reload_time = cadence;
         noAmmo = false;
         tank_states = States.PATROLLING;
+        //ammo_ui.SetActive(false);
         //GameObject objShell = Instantiate(shell, startPos.position, Quaternion.identity) as GameObject;
         //RotateTo(objShell, endPos.position);
     }
@@ -86,9 +93,9 @@ public class SpawnProjectile : MonoBehaviour
             if (bullets != 0)
             {
 
-                if (exclamation != null)
-                    if (exclamation.activeSelf)
-                        exclamation.SetActive(false);
+                if (ammo_ui != null) //Change to Ammo Icon
+                    if (ammo_ui.activeSelf)
+                        ammo_ui.SetActive(false);
 
 
                 if (reload_time <= 0)
@@ -114,6 +121,7 @@ public class SpawnProjectile : MonoBehaviour
 
 
                         bullets -= 1; //reduce ammo
+
                         reload_time = cadence;
 
 
@@ -127,10 +135,10 @@ public class SpawnProjectile : MonoBehaviour
                 noAmmo = true;
 
 
-                if (exclamation != null)
+                if (ammo_ui != null)
                 {
-                    if (!exclamation.activeSelf)
-                        exclamation.SetActive(true);
+                    if (!ammo_ui.activeSelf)
+                        ammo_ui.SetActive(true);
                 }
 
                 if (NoBullets != null)
