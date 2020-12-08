@@ -10,13 +10,19 @@ public class shoot_shell : GOAction
     [InParam("Tank")]
     public GameObject tank;
 
+    [InParam("UI_EXCLAMATION")]
+    public GameObject exclamation_UI;
  
     private SpawnProjectile spawner;
     // Start is called before the first frame update
     private SteeringWander wander;
+
+   // private GameObject exclamation_UI;
     public override void OnStart()
     {
-
+        if (exclamation_UI != null)
+            exclamation_UI.SetActive(true);
+       
         if (tank != null)
         {
             spawner = tank.GetComponentInChildren<SpawnProjectile>();
@@ -56,6 +62,9 @@ public class shoot_shell : GOAction
     {
         spawner.SwitchState(0);
         Debug.Log("Aborted");
+        if(exclamation_UI != null)
+            exclamation_UI.SetActive(false);
+
         tank.GetComponent<SteeringWander>().enabled = false;
         base.OnAbort();
 

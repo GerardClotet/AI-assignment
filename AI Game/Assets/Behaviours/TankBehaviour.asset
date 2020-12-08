@@ -21,6 +21,7 @@ MonoBehaviour:
     isBlackboard=\"False\" />\r\n          <entry name=\"Reload Place\" type=\"UnityEngine.Transform\"
     isBlackboard=\"False\" />\r\n          <entry name=\"TANK_turret\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"False\" />\r\n          <entry name=\"Enemy\" type=\"UnityEngine.GameObject\"
+    isBlackboard=\"False\" />\r\n          <entry name=\"UI_EXCLAMATION\" type=\"UnityEngine.GameObject\"
     isBlackboard=\"False\" />\r\n        </inputValues>\r\n      </inputParams>\r\n
     \     <outputParams />\r\n      <localParams />\r\n    </BehaviorTree>\r\n    <RepeatDecorator
     id=\"2\" loops=\"-1\" policy=\"ContinueWhenChildFails\">\r\n      <child>\r\n
@@ -37,7 +38,7 @@ MonoBehaviour:
     id=\"8\" />\r\n            </guard>\r\n            <child>\r\n              <ActionNode
     id=\"1\" />\r\n            </child>\r\n          </GuardAndNode>\r\n        </elem>\r\n
     \     </children>\r\n      <inputParams />\r\n      <outputParams />\r\n      <localParams
-    />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"7\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\"
+    />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"7\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\"
     name=\"Tank/Reload\">\r\n      <inputParams>\r\n        <inputValues>\r\n          <entry
     name=\"spawn_script\" type=\"UnityEngine.GameObject\" isBlackboard=\"False\" />\r\n
     \         <entry name=\"TANK_turret\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\"
@@ -47,7 +48,7 @@ MonoBehaviour:
     \       <inputValues>\r\n          <entry name=\"Reload Place\" type=\"UnityEngine.Transform\"
     isBlackboard=\"True\" blackboard=\"Reload Place\" />\r\n        </inputValues>\r\n
     \     </inputParams>\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n
-    \   <ConditionEvalNode id=\"13\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Perception/IsTargetClose\">\r\n
+    \   <ConditionEvalNode id=\"13\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Perception/IsTargetClose\">\r\n
     \     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"target\"
     type=\"UnityEngine.GameObject\" isBlackboard=\"True\" blackboard=\"Enemy\" />\r\n
     \         <entry name=\"closeDistance\" type=\"System.Single\" isBlackboard=\"False\"
@@ -55,10 +56,11 @@ MonoBehaviour:
     />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n    <ActionNode id=\"11\"
     action=\"Tank/Shoot\">\r\n      <inputParams>\r\n        <inputValues>\r\n          <entry
     name=\"Tank\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\" blackboard=\"Tank\"
-    />\r\n        </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n
-    \     <localParams />\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"8\"
-    policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n      <inputParams
-    />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n
+    />\r\n          <entry name=\"UI_EXCLAMATION\" type=\"UnityEngine.GameObject\"
+    isBlackboard=\"True\" blackboard=\"UI_EXCLAMATION\" />\r\n        </inputValues>\r\n
+    \     </inputParams>\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n
+    \   <ConditionEvalNode id=\"8\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n
+    \     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n
     \   <ActionNode id=\"1\" action=\"Tank/Patrol\">\r\n      <inputParams>\r\n        <inputValues>\r\n
     \         <entry name=\"Tank\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\"
     blackboard=\"Tank\" />\r\n        </inputValues>\r\n      </inputParams>\r\n      <outputParams
@@ -96,12 +98,12 @@ MonoBehaviour:
     description=\"Goes for the selected place to get ammo\" cardinality=\"0\" hasParent=\"False\">\r\n
     \         <BehaviorTree id=\"5\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n
     \   <ConditionEvalNode id=\"13\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"532.6364 616.736\" name=\"Perception/IsTargetClose\"
+    selected=\"False\" position=\"533.8864 616.736\" name=\"Perception/IsTargetClose\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <ConditionEvalNode id=\"13\" />\r\n          <PrioritySelectorNode
     id=\"6\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n
     \   <ActionNode id=\"11\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"426.1091 493.3888\" name=\"Tank/Shoot\" description=\"Shoots
+    selected=\"True\" position=\"427.3591 493.3888\" name=\"Tank/Shoot\" description=\"Shoots
     between 3 differents types of shells\" cardinality=\"0\" hasParent=\"False\">\r\n
     \         <BehaviorTree id=\"0\" />\r\n          <ActionNode id=\"11\" />\r\n
     \       </data>\r\n      </_data>\r\n    </ActionNode>\r\n    <ConditionEvalNode
