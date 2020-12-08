@@ -10,18 +10,21 @@ public class shoot_shell : GOAction
     [InParam("Tank")]
     public GameObject tank;
 
-    [InParam("ShotsDelayTime")]
-    public float reload_time= 1f;
-
+ 
     private SpawnProjectile spawner;
-    private float aux_time;
     // Start is called before the first frame update
+    private SteeringWander wander;
     public override void OnStart()
     {
-        if (tank != null)
-            spawner = tank.GetComponentInChildren<SpawnProjectile>();
 
-        aux_time = reload_time;
+        if (tank != null)
+        {
+            spawner = tank.GetComponentInChildren<SpawnProjectile>();
+            wander = tank.GetComponent<SteeringWander>();
+            wander.enabled = true;
+            wander.ChangeTarget();
+        }
+
         base.OnStart();
     }
 
@@ -31,6 +34,7 @@ public class shoot_shell : GOAction
         if (spawner == null)
             return TaskStatus.FAILED;
 
+        wander.DoAction();
 
         if(spawner.GetState()==0)
         {
@@ -52,6 +56,8 @@ public class shoot_shell : GOAction
     {
         spawner.SwitchState(0);
         Debug.Log("Aborted");
+        tank.GetComponent<SteeringWander>().enabled = false;
         base.OnAbort();
+
     }
 }

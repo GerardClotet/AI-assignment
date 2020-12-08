@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 7676439301138819015}
   - component: {fileID: 7676439301138819014}
   - component: {fileID: 7676439301138819022}
+  - component: {fileID: 8984183417067104371}
   m_Layer: 8
   m_Name: RedTank
   m_TagString: Untagged
@@ -374,9 +375,9 @@ MonoBehaviour:
     colorParamsNames: []
     colorParamsLostDefaultValue: 
     objectParams:
+    - {fileID: 1002238158535223456}
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 1002238159171116498}
     - {fileID: 0}
     objectParamsNames:
     - Tank
@@ -429,6 +430,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8984183417067104371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002238158535223456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e439e859d063a4ca9983e1f7bb60411a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  radius: 5
+  min_update: 0.5
+  max_update: 0.6
 --- !u!1 &1002238158885338198
 GameObject:
   m_ObjectHideFlags: 0

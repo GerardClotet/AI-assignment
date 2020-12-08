@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
 public class SteeringWander : MonoBehaviour {
@@ -10,28 +11,36 @@ public class SteeringWander : MonoBehaviour {
 
 	SteeringSeek seek;
 	Vector3 random_point;
-    // Use this for initialization
-    public GameObject target;
+
+    private NavMeshAgent agent;
+
 	void Start () {
 		seek = GetComponent<SteeringSeek>();
-		ChangeTarget();
+        agent = GetComponent<NavMeshAgent>();
+		//ChangeTarget();
 	}
 
-    private void Update()
-    {
-        seek.Steer(random_point);
-    }
 
     // Update is called once per frame
-    void ChangeTarget () 
+    public void ChangeTarget () 
 	{
 		random_point = Random.insideUnitSphere;
 		random_point *= radius;
 		random_point += transform.position + offset;
 		random_point.y = transform.position.y;
 
+        agent.CalculatePath(random_point, agent.path);
+        //seek.Steer()
 		Invoke("ChangeTarget", Random.Range(min_update, max_update));
 	}
+
+    public void DoAction()
+    {
+        if (!agent.pathPending)
+            seek.Steer(agent.path.corners[0]);
+
+
+    }
 
 	void OnDrawGizmosSelected() 
 	{

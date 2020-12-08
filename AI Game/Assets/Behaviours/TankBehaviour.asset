@@ -47,7 +47,7 @@ MonoBehaviour:
     \       <inputValues>\r\n          <entry name=\"Reload Place\" type=\"UnityEngine.Transform\"
     isBlackboard=\"True\" blackboard=\"Reload Place\" />\r\n        </inputValues>\r\n
     \     </inputParams>\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n
-    \   <ConditionEvalNode id=\"13\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Perception/IsTargetClose\">\r\n
+    \   <ConditionEvalNode id=\"13\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Perception/IsTargetClose\">\r\n
     \     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"target\"
     type=\"UnityEngine.GameObject\" isBlackboard=\"True\" blackboard=\"Enemy\" />\r\n
     \         <entry name=\"closeDistance\" type=\"System.Single\" isBlackboard=\"False\"

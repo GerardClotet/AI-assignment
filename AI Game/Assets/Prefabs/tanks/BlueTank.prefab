@@ -14914,6 +14914,7 @@ GameObject:
   - component: {fileID: 1579789871}
   - component: {fileID: 1579789870}
   - component: {fileID: 1579789862}
+  - component: {fileID: 1579789867}
   m_Layer: 8
   m_Name: BlueTank
   m_TagString: Untagged
@@ -15188,10 +15189,12 @@ MonoBehaviour:
     - {fileID: 7449123746830803272}
     - {fileID: 0}
     - {fileID: 7449123746728629306}
+    - {fileID: 0}
     objectParamsNames:
     - Tank
     - Reload Place
     - TANK_turret
+    - Enemy
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []
@@ -15238,6 +15241,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1579789867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7449123746830803272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e439e859d063a4ca9983e1f7bb60411a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  radius: 5
+  min_update: 0.5
+  max_update: 0.6
 --- !u!1 &7449123747747159914
 GameObject:
   m_ObjectHideFlags: 0

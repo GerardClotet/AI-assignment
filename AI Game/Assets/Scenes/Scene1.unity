@@ -28741,19 +28741,9 @@ PrefabInstance:
       objectReference: {fileID: 1847302738}
     - target: {fileID: 7676439301138819014, guid: f2640cd51c2f59b478aa9b8f4c775d13,
         type: 3}
-      propertyPath: blackboard.objectParams.Array.data[2]
-      value: 
-      objectReference: {fileID: 8984183416363965722}
-    - target: {fileID: 7676439301138819014, guid: f2640cd51c2f59b478aa9b8f4c775d13,
-        type: 3}
       propertyPath: blackboard.objectParams.Array.data[3]
       value: 
       objectReference: {fileID: 1579789855}
-    - target: {fileID: 7676439301138819014, guid: f2640cd51c2f59b478aa9b8f4c775d13,
-        type: 3}
-      propertyPath: blackboard.objectParams.Array.data[0]
-      value: 
-      objectReference: {fileID: 8984183417067104360}
     - target: {fileID: 7676439301300880279, guid: f2640cd51c2f59b478aa9b8f4c775d13,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -28766,12 +28756,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2640cd51c2f59b478aa9b8f4c775d13, type: 3}
---- !u!1 &8984183416363965722 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1002238159171116498, guid: f2640cd51c2f59b478aa9b8f4c775d13,
-    type: 3}
-  m_PrefabInstance: {fileID: 8162371337372303560}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8984183417067104347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1002238158535223443, guid: f2640cd51c2f59b478aa9b8f4c775d13,
